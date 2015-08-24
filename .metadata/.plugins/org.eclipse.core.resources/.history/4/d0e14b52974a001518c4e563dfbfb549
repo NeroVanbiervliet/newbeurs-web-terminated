@@ -1,0 +1,97 @@
+package supportClasses;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.sql.*;
+
+// A class to interact with the oak beurs database (c) Nero
+public class DatabaseInteraction 
+{
+	
+	// variables
+	private String dbHost = "localhost";;
+	private String dbName = "oakTest";;
+	private String dbUser;
+	private String dbPassword;
+	
+	// TODO arraylists van maken? 
+	List<String> userList = Arrays.asList("root","baerto","beurs");
+	List<String> passwordList = Arrays.asList("lnrddvnc","baertpass","fromzerotoone");
+	
+	// the JDBC connector class
+	private String dbClassName = "com.mysql.jdbc.Driver";
+	
+	private String connectionArgs;
+	
+	// default constructor
+	// NEED root verwijderen als default user
+	public DatabaseInteraction()
+	{
+		this("root");
+	}
+	
+	// constructor 
+	public DatabaseInteraction(String dbUser)
+	{
+		this.dbUser = dbUser; 
+		
+		// get password
+		if(userList.contains(dbUser)) // known user
+		{
+			int userIndex = this.userList.indexOf(dbUser);
+			this.dbPassword = this.passwordList.get(userIndex);
+		}
+		else // unknown user, default pass is empty
+		{
+			this.dbPassword = "";
+		}
+		
+		// looks like jdbc:mysql://localhost/oakTest
+		this.connectionArgs = "jdbc:mysql://" + this.dbHost + "/" + this.dbName;
+		
+		// internet code
+		try 
+		{
+			Class.forName(dbClassName);
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			// NEED testen of dit geprint wordt op webpagina als dbClassName niet gevonden wordt (brolnaam intypen)
+			e.printStackTrace();
+		}
+	}
+	
+	// functions
+	
+	// returns an array of all valid table names NEED afwerken
+	public String getTableNames()
+	{
+		String query = "SHOW TABLES";
+		
+		// NEED change 
+		String queryResult = "";
+		
+		return queryResult;
+	}
+	
+	// executes a given query
+	public ArrayList<HashMap<String,Object>>  executeQuery(String query) throws SQLException
+	{		
+		Connection conn = java.sql.DriverManager.getConnection(connectionArgs,dbUser,dbPassword);
+		Statement statement = conn.createStatement();
+		
+        ResultSet resultSet = statement.executeQuery(query);
+        
+        List<Object> queryResult = new ArrayList();
+        
+        while (resultSet.next())
+        {
+        	query.add()
+        }
+        
+        conn.close();
+        
+        // NEED change
+		return null;
+	}
+}

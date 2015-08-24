@@ -1,0 +1,11 @@
+<%@ page import="java.io.*,java.util.*,java.sql.*"%>
+<%@ page import="supportClasses.DatabaseInteraction" %>
+<html>
+  
+  <body>
+	<%
+		
+		DatabaseInteraction db = new DatabaseInteraction();
+	%>
+  </body>
+</html>

@@ -1,0 +1,128 @@
+package supportClasses;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.sql.*;
+
+// A class to interact with the oak beurs database (c) Nero
+public class DatabaseInteraction 
+{
+	
+	// variables
+	private String dbHost = "localhost";;
+	private String dbName = "oakTest";;
+	private String dbUser;
+	private String dbPassword;
+	
+	// TODO arraylists van maken? 
+	List<String> userList = Arrays.asList("root","baerto","beurs");
+	List<String> passwordList = Arrays.asList("lnrddvnc","baertpass","fromzerotoone");
+	
+	// the JDBC connector class
+	private String dbClassName = "com.mysql.jdbc.Driver";
+	
+	private String connectionArgs;
+	
+	// default constructor
+	// NEED root verwijderen als default user
+	public DatabaseInteraction()
+	{
+		this("root");
+	}
+	
+	// constructor 
+	public DatabaseInteraction(String dbUser)
+	{
+		this.dbUser = dbUser; 
+		
+		// get password
+		if(userList.contains(dbUser)) // known user
+		{
+			int userIndex = this.userList.indexOf(dbUser);
+			this.dbPassword = this.passwordList.get(userIndex);
+		}
+		else // unknown user, default pass is empty
+		{
+			this.dbPassword = "";
+		}
+		
+		// looks like jdbc:mysql://localhost/oakTest
+		this.connectionArgs = "jdbc:mysql://" + this.dbHost + "/" + this.dbName;
+		
+		// internet code
+		try 
+		{
+			Class.forName(dbClassName);
+		} 
+		catch (ClassNotFoundException e) 
+		{
+			// NEED testen of dit geprint wordt op webpagina als dbClassName niet gevonden wordt (brolnaam intypen)
+			e.printStackTrace();
+		}
+	}
+	
+	// functions
+	
+	// returns an array of all valid table names NEED afwerken
+	public String getTableNames()
+	{
+		String query = "SHOW TABLES";
+		
+		// NEED change 
+		String queryResult = "";
+		
+		return queryResult;
+	}
+	
+	// executes a given query
+	public ArrayList<HashMap<String,Object>>  executeQuery(String query) throws SQLException
+	{		
+		Connection conn = java.sql.DriverManager.getConnection(connectionArgs,dbUser,dbPassword);
+		Statement statement = conn.createStatement();
+		
+	    ResultSet resultSet = null;
+	    boolean Returning_Rows = statement.execute(query);
+	    
+	    if (Returning_Rows) // query gefailed
+	    {
+	    	resultSet = statement.getResultSet();
+	    }
+	    else
+	    {
+	    	return new ArrayList<HashMap<String,Object>>();
+	    }
+	    
+	    // get metadata
+	    ResultSetMetaData Meta = null;
+	    Meta = resultSet.getMetaData();
+	    
+	    // get column names
+	    int colCount = Meta.getColumnCount();
+	    ArrayList<String> columns = new ArrayList<String>();
+	    for (int Index=1; Index<=colCount; Index++)
+	    {
+	      columns.add(Meta.getColumnName(Index));
+	    }
+	    
+	    // fetch out rows
+	    ArrayList<HashMap<String,Object>> queryResult = new ArrayList<HashMap<String,Object>>();
+
+	    while (resultSet.next()) 
+	    {
+			  HashMap<String,Object> currentRow = new HashMap<String,Object>();
+			  for (String Col_Name:columns) 
+			  {
+				    Object Val = resultSet.getObject(Col_Name);
+				    currentRow.put(Col_Name,Val);
+			  }
+			  queryResult.add(currentRow);
+	    }
+	    
+	    statement.close();
+        conn.close();
+        
+        // NEED change
+		return null;
+	}
+}

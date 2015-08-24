@@ -1,0 +1,9 @@
+package supportClasses;
+import supportClasses.*;
+
+public class Test 
+{
+	DatabaseInteraction dbInt = new DatabaseInteraction();
+	dbInt.getApp();
+
+}
