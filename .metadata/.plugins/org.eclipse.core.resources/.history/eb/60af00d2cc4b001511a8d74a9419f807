@@ -1,0 +1,5 @@
+package supportClasses;
+
+public class QueryResult implements Iterable<T> {
+
+}

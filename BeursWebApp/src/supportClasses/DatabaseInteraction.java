@@ -4,9 +4,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
-import javax.management.Query;
 
 import java.sql.*;
 
@@ -74,30 +71,42 @@ public class DatabaseInteraction
 	{
 		String query = "SHOW TABLES";
 		
-		ArrayList<HashMap<String, Object>> rawQueryResult = executeQuery(query);
+		QueryResult rawQueryResult = executeQuery(query);
 		
-		HashSet<String> queryResult = new HashSet<>();
+		HashSet<String> tableNames = new HashSet<>();
 		
 		for(HashMap<String, Object> hashMap:rawQueryResult)
 		{
 			for(Object value: hashMap.values())
 			{
-				queryResult.add(value.toString());
+				tableNames.add(value.toString());
 			}
 		}
 		
-		return queryResult;
+		return tableNames;
+	}
+	
+	// creates new user
+	public void addUser(String name, String password) throws SQLException
+	{
+		// hashing password NEED password_hashed zowel als var als in db aanpassen naar passwordHashed
+		String password_hashed = BCrypt.hashpw(password, BCrypt.gensalt(12));
+		
+		String query = "INSERT INTO users(name, password_hashed) ";
+		query += String.format("VALUES ('%s', '%s')", name, password_hashed);
+	
+		executeQuery(query);
 	}
 	
 	// NEED throws aanpassen?
-	public ArrayList<HashMap<String,Object>> getAllTableEntries(String tableName) throws SQLException
+	public QueryResult getAllTableEntries(String tableName) throws SQLException
 	{
 		String query = "SELECT * FROM " + tableName;
 		return executeQuery(query);
 	}
 	
 	// executes a given query
-	public ArrayList<HashMap<String,Object>>  executeQuery(String query) throws SQLException
+	public QueryResult  executeQuery(String query) throws SQLException
 	{		
 		Connection conn = java.sql.DriverManager.getConnection(connectionArgs,dbUser,dbPassword);
 		Statement statement = conn.createStatement();
@@ -113,7 +122,7 @@ public class DatabaseInteraction
 	    }
 	    else
 	    {
-	    	return new ArrayList<HashMap<String,Object>>();
+	    	return new QueryResult(new ArrayList<HashMap<String,Object>>());
 	    }
 	    
 	    // get metadata
@@ -154,7 +163,10 @@ public class DatabaseInteraction
 	    statement.close();
         conn.close();
         
-        return queryResult;
+        
+        QueryResult queryResultPackage = new QueryResult(queryResult);
+        
+        return queryResultPackage;
 	}
 	
 }

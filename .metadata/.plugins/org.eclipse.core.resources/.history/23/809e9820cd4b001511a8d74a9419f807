@@ -1,0 +1,22 @@
+package supportClasses;
+
+import java.util.HashMap;
+import java.util.Iterator;
+
+public class QueryResult implements Iterable<HashMap<String, Object>> {
+
+	
+	
+	// constructor
+	public public QueryResult() 
+	{
+		// TODO Auto-generated constructor stub
+	}
+	
+	@Override
+	public Iterator<HashMap<String, Object>> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

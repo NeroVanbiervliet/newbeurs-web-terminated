@@ -12,3 +12,5 @@
 1440446300637	Rename local variable 'Returning_Rows'
 1440446360774	Rename local variable 'resultSet'
 1440446773483	Rename local variable 'Val'
+1440607847063	Rename local variable 'queryResult'
+1440609623754	Move 'BCrypt.java' to 'supportClasses'
