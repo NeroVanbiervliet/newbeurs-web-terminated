@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Login</title>
+	</head>
+	<body>
+		<form action="index.jsp" method="POST">
+			<p>
+				<label for="account">Account</label> <input type="text"
+					name="account">
+			</p>
+	
+			<p>
+				<label for="password">Password</label> <input type="password"
+					name="password">
+			</p>
+	
+			<p class="submit">
+				<input type="submit" value="Go">
+			</p>
+	
+		</form>
+	</body>
+</html>

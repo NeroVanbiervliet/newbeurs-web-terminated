@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Login</title>
+	</head>
+	<body>
+		<!-- NEED check if not empty -->
+		<form action="login_checker.jsp" method="POST">
+			<input type="hidden" name="postOrigin" value="login_form">
+			<p>
+				<label for="account">Account</label> <input type="text"
+					name="account">
+			</p>
+	
+			<p>
+				<label for="password">Password</label> <input type="password"
+					name="password">
+			</p>
+	
+			<p class="submit">
+				<input type="submit" value="Go">
+			</p>
+	
+		</form>
+	</body>
+</html>

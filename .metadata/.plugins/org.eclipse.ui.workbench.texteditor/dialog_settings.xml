@@ -13,11 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="print" key="selection"/>
+		<item value="passwo" key="selection"/>
 		<list key="findhistory">
-			<item value="print"/>
-			<item value="TABLE"/>
-			<item value="dbClassName"/>
+			<item value="passwo"/>
+			<item value="password_hashed"/>
+			<item value="SQLException"/>
+			<item value="Exception"/>
+			<item value="Exce"/>
+			<item value="backtest_real.users"/>
+			<item value="users"/>
+			<item value="oakTe"/>
 		</list>
 		<list key="replacehistory">
 		</list>

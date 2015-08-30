@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import supportClasses.OakDatabaseException;
 
 import java.sql.*;
 
@@ -12,14 +13,14 @@ public class DatabaseInteraction
 {
 	
 	// variables
-	private String dbHost = "localhost";;
-	private String dbName = "oakTest";;
+	private String dbHost = "localhost";
+	private String dbName;
 	private String dbUser;
 	private String dbPassword;
 	
 	// TODO arraylists van maken? 
-	List<String> userList = Arrays.asList("root","baerto","beurs");
-	List<String> passwordList = Arrays.asList("lnrddvnc","baertpass","fromzerotoone");
+	List<String> userList = Arrays.asList("root","baerto","beurs","webapp");
+	List<String> passwordList = Arrays.asList("lnrddvnc","baertpass","fromzerotoone","fromzerotoone");
 	
 	// the JDBC connector class
 	private String dbClassName = "com.mysql.jdbc.Driver";
@@ -28,14 +29,15 @@ public class DatabaseInteraction
 	
 	// default constructor
 	// NEED root verwijderen als default user
-	public DatabaseInteraction()
+	public DatabaseInteraction(String dbName)
 	{
-		this("root");
+		this(dbName, "root");
 	}
 	
 	// constructor 
-	public DatabaseInteraction(String dbUser)
+	public DatabaseInteraction(String dbName, String dbUser)
 	{
+		this.dbName = dbName;
 		this.dbUser = dbUser; 
 		
 		// get password
@@ -62,6 +64,8 @@ public class DatabaseInteraction
 			// NEED testen of dit geprint wordt op webpagina als dbClassName niet gevonden wordt (brolnaam intypen)
 			e.printStackTrace();
 		}
+		
+		
 	}
 	
 	// functions
@@ -89,11 +93,11 @@ public class DatabaseInteraction
 	// creates new user
 	public void addUser(String name, String password) throws SQLException
 	{
-		// hashing password NEED password_hashed zowel als var als in db aanpassen naar passwordHashed
-		String password_hashed = BCrypt.hashpw(password, BCrypt.gensalt(12));
+
+		String passwordHashed = BCrypt.hashpw(password, BCrypt.gensalt(12));
 		
-		String query = "INSERT INTO users(name, password_hashed) ";
-		query += String.format("VALUES ('%s', '%s')", name, password_hashed);
+		String query = "INSERT INTO user(name, passwordHashed) ";
+		query += String.format("VALUES ('%s', '%s')", name, passwordHashed);
 	
 		executeQuery(query);
 	}
@@ -167,6 +171,49 @@ public class DatabaseInteraction
         QueryResult queryResultPackage = new QueryResult(queryResult);
         
         return queryResultPackage;
+	}
+	
+	// gets the info of a user
+	public QueryResult getUserInfo(String userName) throws OakDatabaseException
+	{
+		String query = String.format("SELECT * FROM user WHERE name='%s'", userName);
+		try 
+		{
+			return executeQuery(query);
+		} 
+		catch (SQLException e) 
+		{
+			// NEED reden voor exception erin verwerken (halen uit e.getmessage of zo)
+			throw new OakDatabaseException("Unknown database error.");
+		}
+	}
+	
+	// checks if the password of a user is correct
+	public boolean isCorrectPassword(String userName, String password) throws OakDatabaseException
+	{
+		QueryResult userInfo = getUserInfo(userName);
+		
+		if(userInfo.containsData())
+		{
+			String passwordHashed = (String) userInfo.iterator().next().get("passwordHashed");
+			
+			// checken of paswoord klopt
+			if (BCrypt.checkpw(password, passwordHashed))
+			{
+				// password matches
+				return true;
+			}
+			else
+			{
+				// password does not match
+				return false;
+			}
+		}
+		else // er is geen match in de database voor deze userName
+		{
+			throw new OakDatabaseException("userName komt niet voor in de user table.");
+		}
+
 	}
 	
 }

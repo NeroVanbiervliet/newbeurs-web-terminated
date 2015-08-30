@@ -1,0 +1,9 @@
+package supportClasses;
+
+public class OakDatabaseException extends Exception 
+{
+	public OakDatabaseException(String message)
+	{
+		super(message);
+	}
+}

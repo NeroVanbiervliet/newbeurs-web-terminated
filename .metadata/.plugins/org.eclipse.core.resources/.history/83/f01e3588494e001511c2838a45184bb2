@@ -1,0 +1,6 @@
+package supportClasses;
+
+public class OakDatabaseException extends Exception 
+{
+
+}

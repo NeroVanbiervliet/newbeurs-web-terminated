@@ -14,3 +14,4 @@
 1440446773483	Rename local variable 'Val'
 1440607847063	Rename local variable 'queryResult'
 1440609623754	Move 'BCrypt.java' to 'supportClasses'
+1440855337039	Rename local variable 'password_hashed'

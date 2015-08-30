@@ -21,7 +21,7 @@ public class QueryResult implements Iterable<HashMap<String, Object>> {
 	{
 		return data.iterator();
 	}
-
+	
 	// returns all column names if this.containsData()
 	public Set<String> getColumnNames()
 	{
@@ -37,6 +37,7 @@ public class QueryResult implements Iterable<HashMap<String, Object>> {
 	}
 	
 	// returns false if no rows are present in the query result
+	// TODO vervangen door lengte van de de arraylist == 0? 
 	public boolean containsData()
 	{
 		Iterator<HashMap<String, Object>> iterator = this.iterator();
