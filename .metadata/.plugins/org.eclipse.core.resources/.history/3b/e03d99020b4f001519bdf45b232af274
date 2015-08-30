@@ -24,11 +24,9 @@
 			<title>Adjust title!</title>
 			<!-- TODO moet hier niet bij dat het javascript is? -->
 			<script>
-				function sendInfo(checkbox)
+				function sendInfo(strategyId,checked)
 				{
-					var checkState = checkbox.checked.toString();
-					var id = checkbox.value.toString();
-					document.getElementById("testDiv").innerHTML = id.concat(checkState);
+					document.getElementById("testDiv").innerHTML = checked.concat(strategyId);
 				}
 			</script>
 		</head>

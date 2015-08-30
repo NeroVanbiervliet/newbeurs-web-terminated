@@ -22,6 +22,15 @@
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 			<title>Adjust title!</title>
+			<!-- TODO moet hier niet bij dat het javascript is? -->
+			<script>
+				function sendInfo(checkbox)
+				{
+					var checkState = checkbox.checked.toString();
+					var id = checkbox.value.toString();
+					document.getElementById("testDiv").innerHTML = id.concat(checkState);
+				}
+			</script>
 		</head>
 		<body>
 			<!-- at runtime -->
@@ -46,7 +55,7 @@
 				{
 					if((Boolean) row.get("isActive"))
 					{
-						out.write(String.format("<input type=\"checkbox\" name=\"strategy\" value=\"%s\" checked>",row.get("id")));
+						out.write(String.format("<input type=\"checkbox\" name=\"strategy\" value=\"%s\" onchange=\"sendInfo(this)\" checked>",row.get("id")));
 					}
 					else
 					{
@@ -59,6 +68,8 @@
 				// closing form
 				out.write("</form>");
 			%>
+			
+			<div id="testDiv"></div>
 			
 		</body>
 		

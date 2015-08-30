@@ -26,9 +26,9 @@
 			<script>
 				function sendInfo(checkbox)
 				{
-					var checkState = checkbox.checked.toString();
+					var checkState = checkbox.checked;
 					var id = checkbox.value.toString();
-					document.getElementById("testDiv").innerHTML = id.concat(checkState);
+					document.getElementById("testDiv").innerHTML = id;
 				}
 			</script>
 		</head>

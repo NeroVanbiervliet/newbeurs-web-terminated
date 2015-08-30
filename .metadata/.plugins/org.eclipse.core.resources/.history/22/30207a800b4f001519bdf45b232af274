@@ -28,7 +28,7 @@
 				{
 					var checkState = checkbox.checked.toString();
 					var id = checkbox.value.toString();
-					document.getElementById("testDiv").innerHTML = id.concat(checkState);
+					document.getElementById("testDiv").innerHTML = id;
 				}
 			</script>
 		</head>
