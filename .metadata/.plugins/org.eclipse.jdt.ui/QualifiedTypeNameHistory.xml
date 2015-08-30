@@ -28,8 +28,8 @@
 <fullyQualifiedTypeName name="java.security.Principal"/>
 <fullyQualifiedTypeName name="javax.management.Query"/>
 <fullyQualifiedTypeName name="supportClasses.QueryResult"/>
-<fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.ws.policy.EffectiveAlternativeSelector"/>
 <fullyQualifiedTypeName name="supportClasses.OakDatabaseException"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
 </qualifiedTypeNameHistroy>

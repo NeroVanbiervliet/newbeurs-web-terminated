@@ -216,4 +216,12 @@ public class DatabaseInteraction
 
 	}
 	
+	// sets the isActive column of a strategy
+	// TODO misschien niet zo netjes om hier strings te gebruiken
+	public void setIsActive(String id, String isActive) throws SQLException
+	{
+		String query = String.format("UPDATE strategy SET isActive=%s WHERE id=%s",isActive,id);
+		executeQuery(query);
+	}
+	
 }

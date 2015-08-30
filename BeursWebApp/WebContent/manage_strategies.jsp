@@ -24,12 +24,32 @@
 			<title>Adjust title!</title>
 			<!-- TODO moet hier niet bij dat het javascript is? -->
 			<script>
-				function sendInfo(checkbox)
-				{
-					var checkState = checkbox.checked.toString();
+			
+				// internet code met eigen aanpassingen
+				// TODO jQuery gebruiken voor ajax (simpelere code)
+				
+				reqObj=null;
+		        function updateDb(checkbox)
+		        {
+		        	var checkState = checkbox.checked.toString();
 					var id = checkbox.value.toString();
-					document.getElementById("testDiv").innerHTML = id.concat(checkState);
-				}
+					
+		            if(window.XMLHttpRequest){
+		                reqObj=new XMLHttpRequest();
+		            }else {
+		                reqObj=new ActiveXObject("Microsoft.XMLHTTP");
+		            }
+		            
+		            reqObj.onreadystatechange=process;
+		            reqObj.open("POST","./update_strategy.jsp?id="+id+"&isActive="+checkState,true);
+		            reqObj.send(null);
+		        }
+		        
+		        function process(){
+		            if(reqObj.readyState==4){
+		                document.getElementById("ajaxResult").innerHTML=reqObj.responseText;
+		            }
+		        }
 			</script>
 		</head>
 		<body>
@@ -55,11 +75,11 @@
 				{
 					if((Boolean) row.get("isActive"))
 					{
-						out.write(String.format("<input type=\"checkbox\" name=\"strategy\" value=\"%s\" onchange=\"sendInfo(this)\" checked>",row.get("id")));
+						out.write(String.format("<input type=\"checkbox\" name=\"strategy\" value=\"%s\" onchange=\"updateDb(this)\" checked>",row.get("id")));
 					}
 					else
 					{
-						out.write(String.format("<input type=\"checkbox\" name=\"strategy\" value=\"%s\">",row.get("id")));
+						out.write(String.format("<input type=\"checkbox\" name=\"strategy\" value=\"%s\" onchange=\"updateDb(this)\">",row.get("id")));
 					}
 					
 					out.write((String)row.get("name") + "<br>");
@@ -69,7 +89,9 @@
 				out.write("</form>");
 			%>
 			
-			<div id="testDiv"></div>
+			<!-- displays the result of the ajax request -->
+			<!-- TODO maken dat de tekst die zegt dat de veranderingen opgeslaan zijn terug weg gaat na een paar seconden -->
+			<div id="ajaxResult"></div>
 			
 		</body>
 		

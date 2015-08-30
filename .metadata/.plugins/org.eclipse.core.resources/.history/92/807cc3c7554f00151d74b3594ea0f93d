@@ -1,0 +1,6 @@
+<%
+	String id = request.getParameter("id");
+	String isActive = request.getParameter("isActive");
+
+	out.write(id+isActive+"van de jsp!");
+%>
