@@ -1,10 +1,11 @@
+<%@page import="supportClasses.QueryResult"%>
 <%@page import="java.sql.Date"%>
 <%@ page import="supportClasses.DatabaseInteraction" %>
 <%@ page import="supportClasses.OakDatabaseException" %>
 <%
 
 // login expiry time NEED verlagen
-int milliSecondsTillLoginExpired = 100000000;
+int milliSecondsTillLoginExpired = 10000000;
 
 request.getSession().setAttribute("loginStatus", "failed");
 
@@ -57,12 +58,19 @@ else if(postOrigin.equals("login_form"))
 	if(isCorrect)
 	{
 		request.getSession().setAttribute("loggedInUserName", account);
+		
+		QueryResult queryResult = dbInt.getUserInfo(account);
+		String userId = queryResult.iterator().next().get("id").toString();
+		
+		request.getSession().setAttribute("loggedInUserId", userId);
+		
 		request.getSession().setAttribute("loggedInTimestamp", System.currentTimeMillis() % 1000);
 		request.getSession().setAttribute("loginStatus", "succeeded");
 	}
 	else // login failed
 	{
 		request.getSession().removeAttribute("loggedInUserName");
+		request.getSession().removeAttribute("loggedInUserId");
 		request.getSession().removeAttribute("loggedInTimestamp");
 		request.getSession().setAttribute("loginStatus", "failed");
 	}

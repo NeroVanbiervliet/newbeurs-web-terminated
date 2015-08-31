@@ -29,7 +29,7 @@
 				// TODO jQuery gebruiken voor ajax (simpelere code)
 				
 				reqObj=null;
-		        function updateDb(checkbox)
+		        function updateIsActive(checkbox)
 		        {
 		        	var checkState = checkbox.checked.toString();
 					var id = checkbox.value.toString();
@@ -42,6 +42,38 @@
 		            
 		            reqObj.onreadystatechange=process;
 		            reqObj.open("POST","./update_strategy.jsp?id="+id+"&isActive="+checkState,true);
+		            reqObj.send(null);
+		        }
+		        
+		        function updateIsActive(checkbox)
+		        {
+		        	var checkState = checkbox.checked.toString();
+					var id = checkbox.value.toString();
+					
+		            if(window.XMLHttpRequest){
+		                reqObj=new XMLHttpRequest();
+		            }else {
+		                reqObj=new ActiveXObject("Microsoft.XMLHTTP");
+		            }
+		            
+		            reqObj.onreadystatechange=process;
+		            reqObj.open("POST","./update_strategy.jsp?id="+id+"&isActive="+checkState,true);
+		            reqObj.send(null);
+		        }
+		        
+		        function updateParameters(textbox)
+		        {
+		        	var id = textbox.id.toString();
+		        	var parameters = textbox.value.toString();
+		        	
+		        	if(window.XMLHttpRequest){
+		                reqObj=new XMLHttpRequest();
+		            }else {
+		                reqObj=new ActiveXObject("Microsoft.XMLHTTP");
+		            }
+		            
+		            reqObj.onreadystatechange=process;
+		            reqObj.open("POST","./update_strategy.jsp?id="+id+"&parameters="+parameters,true);
 		            reqObj.send(null);
 		        }
 		        
@@ -69,20 +101,28 @@
 				// making form
 				out.write("<form>");
 				
-				// adding checkboxes
-				// <input type=\"checkbox\" name=\"strategy\" value=\"%s\" checked> I have a car<br>
+				// TODO knop naast elke checkbos om strategy te archiveren 
+				// adding checkboxes and textboxes
 				for(HashMap<String, Object> row : queryResult)
 				{
 					if((Boolean) row.get("isActive"))
 					{
-						out.write(String.format("<input type=\"checkbox\" name=\"strategy\" value=\"%s\" onchange=\"updateDb(this)\" checked>",row.get("id")));
+						// checkbox isActive, checked
+						out.write(String.format("<input type=\"checkbox\" name=\"strategyCheckBox\" value=\"%s\" onchange=\"updateIsActive(this)\" checked>",row.get("id")));
+						
 					}
 					else
 					{
+						// checkbox isActive, unchecked
 						out.write(String.format("<input type=\"checkbox\" name=\"strategy\" value=\"%s\" onchange=\"updateDb(this)\">",row.get("id")));
 					}
 					
-					out.write((String)row.get("name") + "<br>");
+					out.write((String)row.get("name"));
+					// textbox parameters
+					out.write(String.format("<input type=\"text\" name=\"strategyTextBox\" onblur=\"updateParameters(this)\" id=\"%s\" value=\"%s\">",row.get("id"),row.get("parameters")));
+					// TODO veranderen door div rond elke strategie of zo
+					out.write("<br>");
+					// TODO description nog tonen zodat je weet wat welk argument wil zeggen
 				}
 				
 				// closing form

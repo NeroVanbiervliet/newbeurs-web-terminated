@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+
 import supportClasses.OakDatabaseException;
 
 import java.sql.*;
@@ -221,6 +222,22 @@ public class DatabaseInteraction
 	public void setIsActive(String id, String isActive) throws SQLException
 	{
 		String query = String.format("UPDATE strategy SET isActive=%s WHERE id=%s",isActive,id);
+		executeQuery(query);
+	}
+	
+	// updates the parameters of a strategy
+	// TODO misschien niet zo netjes om hier strings te gebruiken
+	public void setNewParameters(String strategyId, String userId, String newParameters) throws SQLException
+	{
+		// NEED geen record aanmaken als de data niet veranderd is
+		// create strategyEditHistory entry
+		String query = "INSERT INTO strategyEditHistory(strategy,editor,newParameters) ";
+		query += String.format("VALUES ('%s','%s','%s'); ", strategyId,userId,newParameters);
+		
+		executeQuery(query);
+		
+		query = String.format("UPDATE strategy SET parameters='%s' WHERE id=%s;",newParameters,strategyId);
+		
 		executeQuery(query);
 	}
 	

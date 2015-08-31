@@ -349,3 +349,13 @@ org.eclipse.debug.core.DebugException: Terminate failed
 	at java.lang.Thread.run(Thread.java:745)
 !SUBENTRY 1 org.eclipse.debug.core 4 5010 2015-08-30 23:01:23.449
 !MESSAGE Terminate failed
+!SESSION 2015-08-31 08:30:41.858 -----------------------------------------------
+eclipse.buildId=4.5.0.I20150603-2000
+java.version=1.7.0_79
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2015-08-31 09:11:13.995
+!MESSAGE Several ports (8005, 8080, 8009) required by Tomcat v7.0 Server at localhost are already in use. The server may already be running in another process, or a system process may be using the port. To start this server you will need to stop the other process or change the port number(s).

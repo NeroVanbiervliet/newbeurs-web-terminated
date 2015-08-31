@@ -32,4 +32,5 @@
 <fullyQualifiedTypeName name="supportClasses.OakDatabaseException"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="org.apache.jasper.tagplugins.jstl.core.Out"/>
 </qualifiedTypeNameHistroy>
