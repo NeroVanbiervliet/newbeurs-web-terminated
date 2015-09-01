@@ -29,7 +29,38 @@
 			<!-- at runtime TODO compile time van maken?  -->
 			<jsp:include page="navigation.html" />
 			
-			dit is de index
+			<table>
+			<% 
+				// NEED root aanpassen naar webapp
+				DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","root");
+				QueryResult queryResult = dbInt.getAllTableEntries("simulation");
+				
+				out.write("<tr>");
+				for(String columnName : queryResult.getColumnNames())
+				{
+					out.write(String.format("<th>%s</th>",columnName));
+				}
+				out.write("</tr>");
+				
+				for(HashMap<String,Object> simulation : queryResult)
+				{
+					out.write("<tr>");
+					for(String key : simulation.keySet())
+					{
+						if(simulation.get(key) != null)
+						{
+							out.write(String.format("<td>%s</td>",simulation.get(key).toString()));
+						}
+						else
+						{
+							out.write("<td></td>");
+						}
+					}
+					out.write("</tr>");
+				}
+			%>
+			</table>
+			
 		</body>
 		
 	<%} %>

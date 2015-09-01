@@ -241,4 +241,14 @@ public class DatabaseInteraction
 		executeQuery(query);
 	}
 	
+	// adds an entry to the simulation table
+	public void addSimulation(String name,String description,String owner,String strategy) throws SQLException
+	{
+		// INSERT INTO simulation(name,description,owner,strategy,totalGain,totalReturn,status,progress) VALUES('denaam','descip0','1','1','3','4','running','40');
+		String query = "INSERT INTO simulation(name,description,owner,strategy,status,progress) ";
+		query += String.format("VALUES('%s','%s','%s','%s','running','0')",name,description,owner,strategy);
+		
+		executeQuery(query);
+	}
+	
 }

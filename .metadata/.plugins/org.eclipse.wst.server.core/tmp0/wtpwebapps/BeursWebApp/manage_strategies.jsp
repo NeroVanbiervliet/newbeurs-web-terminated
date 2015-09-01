@@ -114,7 +114,7 @@
 					else
 					{
 						// checkbox isActive, unchecked
-						out.write(String.format("<input type=\"checkbox\" name=\"strategy\" value=\"%s\" onchange=\"updateDb(this)\">",row.get("id")));
+						out.write(String.format("<input type=\"checkbox\" name=\"strategy\" value=\"%s\" onchange=\"updateIsActive(this)\">",row.get("id")));
 					}
 					
 					out.write((String)row.get("name"));

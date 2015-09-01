@@ -1,0 +1,8 @@
+<div>
+	<nav>
+	  <a href=".">Tests</a> |
+	  <a href="initiate_task.jsp">Initiate task</a> |
+	  <a href="manage_strategies.jsp">Manage strategies</a> |
+	  <a href="preferences.jsp">Preferences</a>
+	</nav>
+</div>
