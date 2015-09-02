@@ -41,8 +41,7 @@ else if(postOrigin.equals("login_form"))
 	String account = request.getParameter("account");
 	String password = request.getParameter("password");
 	
-	// NEED account aanpassen naar webapp, python acc moet python worden
-	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real");
+	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");
 	
 	boolean isCorrect;
 	try 

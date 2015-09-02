@@ -7,8 +7,7 @@
 	String parameters = request.getParameter("parameters");
 	
 	// in de sql server aanpassen
-	// TODO root weg, webapp
-	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","root");
+	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");
 	
 	if(isActive == null)
 	{

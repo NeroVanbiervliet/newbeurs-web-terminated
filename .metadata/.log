@@ -359,3 +359,56 @@ Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp
 
 !ENTRY org.eclipse.jst.server.tomcat.core 4 0 2015-08-31 09:11:13.995
 !MESSAGE Several ports (8005, 8080, 8009) required by Tomcat v7.0 Server at localhost are already in use. The server may already be running in another process, or a system process may be using the port. To start this server you will need to stop the other process or change the port number(s).
+!SESSION 2015-09-01 16:17:03.289 -----------------------------------------------
+eclipse.buildId=4.5.0.I20150603-2000
+java.version=1.7.0_79
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jst.server.tomcat.core 4 0 2015-09-01 16:21:54.811
+!MESSAGE Several ports (8005, 8080, 8009) required by Tomcat v7.0 Server at localhost are already in use. The server may already be running in another process, or a system process may be using the port. To start this server you will need to stop the other process or change the port number(s).
+
+!ENTRY org.eclipse.ui.navigator 4 0 2015-09-01 17:01:24.736
+!MESSAGE Cannot find navigator content extension (using triggerPoints) for object "<null>" parent path: "F/BeursWebApp/build".  Check that you have an expression for this object in a navigatorContent triggerPoints or enablement.
+
+!ENTRY org.eclipse.ui.navigator 4 0 2015-09-01 17:01:24.828
+!MESSAGE Cannot find navigator content extension (using triggerPoints) for object "<null>" parent path: "F/BeursWebApp/build".  Check that you have an expression for this object in a navigatorContent triggerPoints or enablement.
+
+!ENTRY org.eclipse.ui.navigator 4 0 2015-09-01 17:02:19.541
+!MESSAGE Cannot find navigator content extension (using triggerPoints) for object "<null>" parent path: "F/BeursWebApp/build".  Check that you have an expression for this object in a navigatorContent triggerPoints or enablement.
+
+!ENTRY org.eclipse.ui.navigator 4 0 2015-09-01 17:02:19.578
+!MESSAGE Cannot find navigator content extension (using triggerPoints) for object "<null>" parent path: "F/BeursWebApp/build".  Check that you have an expression for this object in a navigatorContent triggerPoints or enablement.
+!SESSION 2015-09-02 08:36:09.520 -----------------------------------------------
+eclipse.buildId=4.5.0.I20150603-2000
+java.version=1.7.0_79
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.ui 4 4 2015-09-02 09:42:36.586
+!MESSAGE Plug-in 'org.eclipse.m2e.core.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.eclipse.m2e.enableNatureAction
+
+!ENTRY org.eclipse.ui 4 4 2015-09-02 09:42:36.893
+!MESSAGE Plug-in 'org.eclipse.pde.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.eclipse.pde.ui.ConvertedProjectWizard
+
+!ENTRY org.eclipse.ui 4 4 2015-09-02 09:42:37.063
+!MESSAGE Plug-in 'org.eclipse.m2e.core.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.eclipse.m2e.enableNatureAction
+
+!ENTRY org.eclipse.ui 4 4 2015-09-02 09:42:37.075
+!MESSAGE Plug-in 'org.eclipse.pde.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.eclipse.pde.ui.ConvertedProjectWizard
+
+!ENTRY org.eclipse.ui 4 4 2015-09-02 09:42:37.247
+!MESSAGE Plug-in 'org.eclipse.m2e.core.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.eclipse.m2e.enableNatureAction
+
+!ENTRY org.eclipse.ui 4 4 2015-09-02 09:42:37.258
+!MESSAGE Plug-in 'org.eclipse.pde.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.eclipse.pde.ui.ConvertedProjectWizard
+
+!ENTRY org.eclipse.ui 4 4 2015-09-02 09:42:39.105
+!MESSAGE Plug-in 'org.eclipse.m2e.core.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.eclipse.m2e.enableNatureAction
+
+!ENTRY org.eclipse.ui 4 4 2015-09-02 09:42:39.111
+!MESSAGE Plug-in 'org.eclipse.pde.ui' contributed an invalid Menu Extension (Path: 'org.eclipse.ui.projectConfigure' is invalid): org.eclipse.pde.ui.ConvertedProjectWizard

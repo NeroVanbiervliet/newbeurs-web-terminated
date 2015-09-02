@@ -40,15 +40,22 @@ public class QueryResult implements Iterable<HashMap<String, Object>> {
 	// TODO vervangen door lengte van de de arraylist == 0? 
 	public boolean containsData()
 	{
-		Iterator<HashMap<String, Object>> iterator = this.iterator();
+		//Iterator<HashMap<String, Object>> iterator = this.iterator();
 		
-		if(iterator.hasNext()) // iterator is niet leeg
-		{
-			return true;
-		}
-		else // iterator is leeg
-		{
-			return false;
-		}
+		//if(iterator.hasNext()) // iterator is niet leeg
+		//{
+		//	return true;
+		//}
+		//else // iterator is leeg
+		//{
+		//	return false;
+		//}
+		
+		return (getNumOfEntries()!=0);
+	}
+	
+	public int getNumOfEntries()
+	{
+		return data.size();
 	}
 }

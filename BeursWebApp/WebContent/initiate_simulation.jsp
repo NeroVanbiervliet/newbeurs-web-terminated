@@ -22,37 +22,93 @@
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 			<title>Adjust title!</title>
+			<!-- vervangen door lokale jquery (er staat al één in WEB-INF -->
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+			<script>			
+				function updateInfo()
+				{
+					var strategyId = document.getElementById("strategySelector").value-1;
+					var infoToShow = strategyInfo[strategyId];
+					document.getElementById("strategyInfoBox").value = infoToShow;
+				}
+				
+				// add event handler to form
+				$( "#simulationForm" ).submit(function(event){
+					 
+					// Stop form from submitting normally
+					event.preventDefault();
+					
+					var data = $('simulationForm').serialize();
+					
+					// Send the data using post
+					$.post('launch_simulation.jsp', data,function(result){
+			            $("#ajaxResult").html(result);
+			            alert("ding");
+			        });
+					
+					
+				});
+				
+			</script>
 		</head>
-		<body>
+		<body onload="updateInfo()">
 			<!-- at runtime -->
 			<jsp:include page="header.jsp" />
 			
 			<!-- at runtime TODO compile time van maken?  -->
 			<jsp:include page="navigation.html" />
 			
-			
-			<form>
+			<form action="." id="simulationForm">
 				<p>
 					<label for="simulationName">Simulation name</label>
 					<input type="text" name="simulationName">
 				</p>
 				
 				<p>
-					<label for="description">Description</label>
+					<label for="simulationDescription">Description</label>
 					<input type="text" name="description">
 				</p>
 				
+				<!-- build up array containing strategy descriptions -->
 				<script>
-					// NEED met jsp een array stockeren in javascript die dan geraadpleegd wordt bij updateInfo() functie
+					<% 
+						DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");
+						QueryResult queryResult = dbInt.getAllTableEntries("strategy LEFT JOIN method ON strategy.method=method.id");
+												
+						// verbetering mogelijk
+						// geklooi hieronder is omdat ik niet zeker ben dat bij for each over queryResult hij wel in volgorde van id overloopt	
+							
+						int numOfStrategies = queryResult.getNumOfEntries();
+						String[] strategyDescriptions = new String[numOfStrategies];
+						
+						int index;
+								
+						for(HashMap<String,Object> strategy : queryResult)
+						{
+							// index is 1 minder dan id want index van array telt vanaf 0, id vanaf 1
+							index = Integer.parseInt(strategy.get("id").toString())-1;
+							strategyDescriptions[index] = strategy.get("description").toString();
+						}
+						
+						// javascript array schrijven
+						out.write("var strategyInfo = [");
+						for(String description : strategyDescriptions)
+						{
+							out.write(String.format("\"%s\",",description));
+						}
+						// TODO laatste komma weghalen die na de laatste description wordt geprint
+						out.write("];");
+					%>
 				</script>
 				
 				<p>
-					<label for="strategy">Script</label>
-					<select id="strategy" onchange="updateInfo()" name="strategy">
+					
+					
+					<label for="strategy">Strategy</label>
+					<select id="strategySelector" onchange="updateInfo()" name="strategy">
 					<% 	
-						// NEED root vervangen door webapp
-						DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","root");
-						QueryResult queryResult = dbInt.getAllTableEntries("strategy");
+						// queryResult object already created in above code between script tags
+						queryResult = dbInt.getAllTableEntries("strategy");
 							
 						for(HashMap<String,Object> strategy : queryResult)
 						{
@@ -62,7 +118,17 @@
 					%>
 					</select>
 				</p>	
+				
+				<p>
+					<label for="strategyInfoBox">Strategy readme</label>
+					<textarea id="strategyInfoBox" readonly></textarea>
+				</p>
+				
+				<p class="submit">			
+					<input type="submit" value="initiate simulation">
+				</p>
 			</form>
+			<div id="ajaxResult"></div>
 		</body>
 		
 	<%} %>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+</head>
+<body>
+<form id="simulationForm" action="launch_simulation.jsp">
+	<input name="brol" type="text">
+	<input type="submit" id="dong" value="initiate simulation">
+</form>
+
+
+</body>
+</html>

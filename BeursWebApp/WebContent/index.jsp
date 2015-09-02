@@ -31,8 +31,7 @@
 			
 			<table>
 			<% 
-				// NEED root aanpassen naar webapp
-				DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","root");
+				DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");
 				QueryResult queryResult = dbInt.getAllTableEntries("simulation");
 				
 				out.write("<tr>");

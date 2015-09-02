@@ -1,0 +1,7 @@
+<%
+	String strategyId = request.getParameter("id");
+	String isActive = request.getParameter("isActive");
+	String parameters = request.getParameter("parameters");
+	out.write("test");
+
+%>
