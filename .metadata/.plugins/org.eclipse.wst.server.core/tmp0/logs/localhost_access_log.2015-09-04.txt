@@ -1,0 +1,5 @@
+127.0.0.1 - - [04/Sep/2015:12:16:28 +0200] "GET / HTTP/1.1" 404 951
+127.0.0.1 - - [04/Sep/2015:12:16:30 +0200] "GET /BeursWebApp/launch_simulation.jsp HTTP/1.1" 200 32
+127.0.0.1 - - [04/Sep/2015:12:20:49 +0200] "GET /BeursWebApp/launch_simulation.jsp HTTP/1.1" 200 32
+127.0.0.1 - - [04/Sep/2015:12:21:23 +0200] "GET /BeursWebApp/launch_simulation.jsp HTTP/1.1" 200 32
+127.0.0.1 - - [04/Sep/2015:12:22:32 +0200] "GET /BeursWebApp/launch_simulation.jsp HTTP/1.1" 200 32

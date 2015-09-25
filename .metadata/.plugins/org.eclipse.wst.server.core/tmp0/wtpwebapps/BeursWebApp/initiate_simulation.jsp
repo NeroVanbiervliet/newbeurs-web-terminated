@@ -23,7 +23,7 @@
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 			<title>Adjust title!</title>
 			<!-- vervangen door lokale jquery (er staat al één in WEB-INF -->
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+			<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 			<script>			
 				function updateInfo()
 				{
@@ -31,25 +31,31 @@
 					var infoToShow = strategyInfo[strategyId];
 					document.getElementById("strategyInfoBox").value = infoToShow;
 				}
-				
-				// add event handler to form
-				$( "#simulationForm" ).submit(function(event){
-					 
-					// Stop form from submitting normally
-					event.preventDefault();
-					
-					var data = $('simulationForm').serialize();
-					
-					// Send the data using post
-					$.post('launch_simulation.jsp', data,function(result){
-			            $("#ajaxResult").html(result);
-			            alert("ding");
-			        });
-					
-					
-				});
-				
 			</script>
+			<script>
+	            /* attach a submit handler to the form */
+	            $("#simulationForm").submit(function(event) {
+	
+	                /* stop form from submitting normally */
+	                event.preventDefault();
+	
+	                /* get some values from elements on the page: */
+	                var $form = $(this),
+	                    term = $form.find('input[name="s"]').val(),
+	                    url = $form.attr('action');
+	                
+	                // serialize form
+	                var dataToSend = form.serialize();
+	                
+	                /* Send the data using post */
+	                var posting = $.post(url, dataToSend);
+	                
+	                /* Put the results in a div */
+	                posting.done(function(data) {
+	                    $("#ajaxResult").empty().append(data);
+	                });
+	            });
+	        </script>
 		</head>
 		<body onload="updateInfo()">
 			<!-- at runtime -->
@@ -58,7 +64,7 @@
 			<!-- at runtime TODO compile time van maken?  -->
 			<jsp:include page="navigation.html" />
 			
-			<form action="." id="simulationForm">
+			<form action="launch_simulation.jsp" id="simulationForm">
 				<p>
 					<label for="simulationName">Simulation name</label>
 					<input type="text" name="simulationName">
@@ -102,8 +108,6 @@
 				</script>
 				
 				<p>
-					
-					
 					<label for="strategy">Strategy</label>
 					<select id="strategySelector" onchange="updateInfo()" name="strategy">
 					<% 	
@@ -122,6 +126,19 @@
 				<p>
 					<label for="strategyInfoBox">Strategy readme</label>
 					<textarea id="strategyInfoBox" readonly></textarea>
+				</p>
+				
+				<!-- TODO start date limiteren, niet te lang geleden -->
+				
+				<p>
+					<label for="startDate">Start date</label>
+					<input id="startDate" type="date" name="startDate">
+				</p>
+				
+				<p>
+					<label for="endDate">End date</label>
+					<!-- dag van vandaag is de maximale simulatiedatum -->
+					<input id="endDate" type="date" name="endDate" max="<%= (new java.text.SimpleDateFormat("yyyy-MM-dd")).format(new java.util.Date()) %>">
 				</p>
 				
 				<p class="submit">			

@@ -1,8 +1,0 @@
-<%
-	String simulationName = request.getParameter("simulationName");
-	String simulationDescription = request.getParameter("simulationDescription");
-	String strategyId = request.getParameter("strategyId");
-	
-	out.write("test");
-
-%>

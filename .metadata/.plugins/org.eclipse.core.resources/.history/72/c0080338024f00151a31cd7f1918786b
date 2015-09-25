@@ -1,8 +1,0 @@
-<div>
-	<nav>
-	  <a href=".">Tests</a> |
-	  <a href="new_task">Initiate task</a> |
-	  <a href="manage_strategies">Manage strategies</a> |
-	  <a href="preferences">Preferences</a>
-	</nav>
-</div>

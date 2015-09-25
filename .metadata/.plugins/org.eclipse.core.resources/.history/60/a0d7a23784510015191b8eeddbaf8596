@@ -1,9 +1,0 @@
-<%
-	// get post variables
-	//String simulationName = request.getParameter("simulationName");
-	//String simulationDescription = request.getParameter("simulationDescription");
-	//String strategyId = request.getParameter("strategyId");
-	//String userId = request.getSession().getAttribute("loggedInUserId").toString();
-	
-	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","root");
-%>

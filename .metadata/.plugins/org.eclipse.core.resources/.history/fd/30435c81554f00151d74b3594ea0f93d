@@ -1,5 +1,0 @@
-<%
-	int id = request.getParameter("id");
-	boolean isActive = request.getParameter("isActive");
-
-%>
