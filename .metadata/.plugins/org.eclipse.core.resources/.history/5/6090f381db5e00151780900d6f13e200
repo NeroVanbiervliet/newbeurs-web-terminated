@@ -1,5 +1,0 @@
-<div>
-	Welcome, user <%= request.getSession().getAttribute("loggedInUserName") %>
-	[id=<%= request.getSession().getAttribute("loggedInUserId") %>]
-</div>
-

@@ -109,7 +109,7 @@
 				
 				<p>
 					<label for="strategy">Strategy</label>
-					<select id="strategySelector" onchange="updateInfo()" name="strategy">
+					<select id="strategySelector" onchange="updateInfo()" name="strategyId">
 					<% 	
 						// queryResult object already created in above code between script tags
 						queryResult = dbInt.getAllTableEntries("strategy");
@@ -142,7 +142,7 @@
 				</p>
 				
 				<p class="submit">			
-					<input type="submit" value="initiate simulation">
+					<input type="submit" class="btn btn-primary btn-lg" value="initiate simulation">
 				</p>
 			</form>
 			<div id="ajaxResult"></div>

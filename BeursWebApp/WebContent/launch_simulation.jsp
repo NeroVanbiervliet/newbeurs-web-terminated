@@ -2,33 +2,31 @@
 <%@ include file="import.jsp" %>
 <%
 	// get post variables NEED uncommenten
-	//String simulationName = request.getParameter("simulationName");
-	//String simulationDescription = request.getParameter("simulationDescription");
-	//String strategyId = request.getParameter("strategyId");
-	//String userId = request.getSession().getAttribute("loggedInUserId").toString();
-	// NEED: methodName
-	// NEED: methodArguments
-	// NEED: simulationId -> NA toevoegen in de database simulatierecord terug uit db halen om id te weten
-	
-	// demo data NEED verwijderen
-	String simulationName = "greece15";
-	String simulationdescription = "griekenland jongeuh";
-	String userId = "1";
-	String strategyId = "1";
-	String methodName = "test";
-	String methodArguments = "15 20";
+	String simulationName = request.getParameter("simulationName");
+	String simulationDescription = request.getParameter("description");
+	String strategyId = request.getParameter("strategyId");
+	String userId = request.getSession().getAttribute("loggedInUserId").toString();
+	String startDate = request.getSession().getAttribute("startDate").toString();
+	String endDate = request.getSession().getAttribute("endDate").toString();
 	
 	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");
-	dbInt.addSimulation(simulationName, simulationdescription, userId, strategyId);
+	dbInt.addSimulation(simulationName, simulationDescription, userId, strategyId);
 	
 	// TODO kan voor race condition zorgen als naam van sim veranderd is ondertussen
 	QueryResult queryResult = dbInt.executeQuery(String.format("SELECT id FROM simulation WHERE name='%s'",simulationName));
 	String simulationId = queryResult.iterator().next().get("id").toString();
 	
+	// methodName en args halen uit strategy record uit database
+	queryResult = dbInt.executeQuery(String.format("SELECT method, parameters FROM strategy WHERE id='%s'",strategyId));
+	String methodId = queryResult.iterator().next().get("method").toString();
+	String methodArguments = queryResult.iterator().next().get("parameters").toString();
+	queryResult = dbInt.executeQuery(String.format("SELECT name FROM strategy WHERE id='%s'",methodId));
+	String methodName = queryResult.iterator().next().get("name").toString();
+	
 	// bash process launcher
-	ProcessBuilder b = new ProcessBuilder("/bin/bash","/home/nero/GIT/Bitbucket/NewbeursPython/WebSlaves/launch_new_task",methodName,methodArguments,simulationId);
+	// NEED url aanpassen
+	ProcessBuilder b = new ProcessBuilder("/bin/bash","/home/nero/GIT/Bitbucket/pythonBeurs/WebSlaves/launch_new_task",methodName,methodArguments,simulationId,startDate,endDate);
 	b.start();
 	
-	out.write(request.getParameter("simulationName"));
-	out.write("jquery done");
+	out.write("simulation started");
 %>

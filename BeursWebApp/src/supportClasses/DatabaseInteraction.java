@@ -20,8 +20,8 @@ public class DatabaseInteraction
 	private String dbPassword;
 	
 	// TODO arraylists van maken? 
-	List<String> userList = Arrays.asList("root","webapp");
-	List<String> passwordList = Arrays.asList("lnrddvnc","frmzrtn5894rndm");
+	List<String> userList = Arrays.asList("root","webapp","test");
+	List<String> passwordList = Arrays.asList("crvfttngdsntwrk","frmzrtn5894rndm","test");
 	
 	// the JDBC connector class
 	private String dbClassName = "com.mysql.jdbc.Driver";

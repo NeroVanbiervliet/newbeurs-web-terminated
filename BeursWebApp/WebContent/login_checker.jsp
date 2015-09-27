@@ -1,3 +1,4 @@
+<%@page import="com.sun.corba.se.spi.ior.Writeable"%>
 <%@page import="supportClasses.QueryResult"%>
 <%@page import="java.sql.Date"%>
 <%@ page import="supportClasses.DatabaseInteraction" %>
@@ -42,6 +43,7 @@ else if(postOrigin.equals("login_form"))
 	String password = request.getParameter("password");
 	
 	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");
+	
 	
 	boolean isCorrect;
 	try 
