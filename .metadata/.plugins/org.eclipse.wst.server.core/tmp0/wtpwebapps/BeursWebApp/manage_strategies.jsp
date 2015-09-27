@@ -92,8 +92,11 @@
 			<jsp:include page="navigation.html" />
 			
 			<% 	
-				// NEED moet user webapp worden
-				DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","root");
+				// NEED niet update pushen naar de db als er niets veranderd is in de textboxes
+				// want anders maakt hij steeds een strategyEditHistory
+				// onchange event gebruiken in combinatie met leavefocus of zoiets? 
+			
+				DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");
 				
 				// getting entries from strategy table
 				QueryResult queryResult = dbInt.getAllTableEntries("strategy");

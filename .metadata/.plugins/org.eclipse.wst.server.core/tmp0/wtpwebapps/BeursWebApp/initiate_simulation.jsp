@@ -41,7 +41,7 @@
 	
 	                /* get some values from elements on the page: */
 	                var $form = $(this),
-	                    term = $form.find('input[name="s"]').val(),
+	                    term = $form.find('input[name="s"]').val(), // TODO deze lijn mag weg? 
 	                    url = $form.attr('action');
 	                
 	                // serialize form

@@ -87,15 +87,19 @@
 							out.write("</td>");
 							
 							// status
-							// NEED stop als running (knop)
+							// TODO kleuren aanpassen
 							out.write("<td>");
-							out.write(simulation.get("status").toString());
+							String status = simulation.get("status").toString();
+							out.write(status);
+							if(status.equals("running"))
+							{
+								out.write(String.format("<a href=\"killSimulation.jsp?simId=%s\">(stop)</a>",simulation.get("simId").toString()));
+							}
 							out.write("</td>");
-							
 							// running time
 							
 							// calculate difference in time between start and end time
-							// * ipv 0? 
+							// TODO * ipv 0? 
 							DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.'0'", Locale.ENGLISH);
 							java.util.Date startDate = format.parse(simulation.get("timestampStart").toString());
 							java.util.Date endDate;
