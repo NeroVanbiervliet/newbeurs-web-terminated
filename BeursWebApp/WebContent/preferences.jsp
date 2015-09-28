@@ -34,6 +34,8 @@
 			
 			Nothing to see here pal, move on
 			
+			<!-- at runtime -->
+			<jsp:include page="footer.jsp" />
 		</body>
 		
 	<%} %>

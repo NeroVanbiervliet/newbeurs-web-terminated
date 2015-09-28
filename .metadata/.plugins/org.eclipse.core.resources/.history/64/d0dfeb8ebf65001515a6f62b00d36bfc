@@ -1,0 +1,8 @@
+<div>
+	<nav class="navbar navbar-default navbar-fixed-top">
+	  <a href=".">Tests</a> |
+	  <a href="initiate_simulation.jsp">Initiate task</a> |
+	  <a href="manage_strategies.jsp">Manage strategies</a> |
+	  <a href="preferences.jsp">Preferences</a>
+	</nav>
+</div>

@@ -139,7 +139,8 @@
 					}
 				%> 
 			</table>
-			
+			<!-- at runtime -->
+			<jsp:include page="footer.jsp" />
 		</body>
 		
 	<%} %>

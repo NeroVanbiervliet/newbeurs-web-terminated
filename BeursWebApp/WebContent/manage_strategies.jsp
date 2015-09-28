@@ -91,51 +91,48 @@
 			<!-- at runtime TODO compile time van maken?  -->
 			<jsp:include page="navigation.html" />
 			
-			<% 	
-				// NEED niet update pushen naar de db als er niets veranderd is in de textboxes
-				// want anders maakt hij steeds een strategyEditHistory
-				// onchange event gebruiken in combinatie met leavefocus of zoiets? 
-			
-				DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");
+			<form>
+				<% 	
+					// NEED niet update pushen naar de db als er niets veranderd is in de textboxes
+					// want anders maakt hij steeds een strategyEditHistory
+					// onchange event gebruiken in combinatie met leavefocus of zoiets? 
 				
-				// getting entries from strategy table
-				QueryResult queryResult = dbInt.getAllTableEntries("strategy");
-				
-				// making form
-				out.write("<form>");
-				
-				// TODO knop naast elke checkbos om strategy te archiveren 
-				// adding checkboxes and textboxes
-				for(HashMap<String, Object> row : queryResult)
-				{
-					if((Boolean) row.get("isActive"))
-					{
-						// checkbox isActive, checked
-						out.write(String.format("<input type=\"checkbox\" name=\"strategyCheckBox\" value=\"%s\" onchange=\"updateIsActive(this)\" checked>",row.get("id")));
-						
-					}
-					else
-					{
-						// checkbox isActive, unchecked
-						out.write(String.format("<input type=\"checkbox\" name=\"strategy\" value=\"%s\" onchange=\"updateIsActive(this)\">",row.get("id")));
-					}
+					DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");
 					
-					out.write((String)row.get("name"));
-					// textbox parameters
-					out.write(String.format("<input type=\"text\" name=\"strategyTextBox\" onblur=\"updateParameters(this)\" id=\"%s\" value=\"%s\">",row.get("id"),row.get("parameters")));
-					// TODO veranderen door div rond elke strategie of zo
-					out.write("<br>");
-					// TODO description nog tonen zodat je weet wat welk argument wil zeggen
-				}
-				
-				// closing form
-				out.write("</form>");
-			%>
-			
+					// getting entries from strategy table
+					QueryResult queryResult = dbInt.getAllTableEntries("strategy");
+
+					// TODO knop naast elke checkbos om strategy te archiveren 
+					// adding checkboxes and textboxes
+					for(HashMap<String, Object> row : queryResult)
+					{
+						out.write("<p>");
+						out.write(String.format("<label for=\"%s\">%s</label>",row.get("id").toString(),row.get("name").toString()));
+						if((Boolean) row.get("isActive"))
+						{
+							// checkbox isActive, checked
+							out.write(String.format("<input type=\"checkbox\" name=\"strategyCheckBox\" id=\"%s\" value=\"%s\" onchange=\"updateIsActive(this)\" checked>",row.get("id"),row.get("id")));
+							
+						}
+						else
+						{
+							// checkbox isActive, unchecked
+							out.write(String.format("<input type=\"checkbox\" name=\"strategy\" id=\"%s\" value=\"%s\" onchange=\"updateIsActive(this)\">",row.get("id"),row.get("id")));
+						}
+						
+						// textbox parameters
+						out.write(String.format("<input type=\"text\" name=\"strategyTextBox\" onblur=\"updateParameters(this)\" id=\"%s\" value=\"%s\">",row.get("id"),row.get("parameters")));
+
+						out.write("</p>");
+						// TODO description nog tonen zodat je weet wat welk argument wil zeggen
+					}
+				%>
+			</form>
 			<!-- displays the result of the ajax request -->
 			<!-- TODO maken dat de tekst die zegt dat de veranderingen opgeslaan zijn terug weg gaat na een paar seconden -->
 			<div id="ajaxResult"></div>
-			
+			<!-- at runtime -->
+			<jsp:include page="footer.jsp" />
 		</body>
 		
 	<%} %>

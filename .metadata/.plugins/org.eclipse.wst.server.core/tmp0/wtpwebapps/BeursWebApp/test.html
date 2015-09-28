@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script>
-	$("#simulationForm").submit(function(event) {
-		event.preventDefault();
-		
-		var data = $('simulationForm').serialize();
-		
-		// Send the data using post
-		$.post('launch_simulation.jsp',data,function(result){
-            alert("ding");
-        });
-		
-		 // avoid to execute the actual submit of the form.
-	});
-</script>
+	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+	<script>
+            /* attach a submit handler to the form */
+            $("#simulationForm").submit(function(event) {
+
+                /* stop form from submitting normally */
+                event.preventDefault();
+
+                /* get some values from elements on the page: */
+                var $form = $(this),
+                    term = $form.find('input[name="s"]').val(), // TODO deze lijn mag weg? 
+                    url = $form.attr('action');
+                
+                // serialize form
+                var dataToSend = form.serialize();
+                
+                alert(dataToSend);
+                
+                /* Send the data using post */
+                var posting = $.post(url, dataToSend);
+                
+                /* Put the results in a div */
+                posting.done(function(data) {
+                    $("#ajaxResult").empty().append(data);
+                });
+            });
+        </script>
 </head>
 <body>
-<form id="simulationForm" action="launch_simulation.jsp">
-	<input name="brol" type="text">
+<form id="simulationForm" action="test3.jsp">
+	<input name="datum" type="date">
 	<input type="submit" id="dong" value="initiate simulation">
 </form>
 
