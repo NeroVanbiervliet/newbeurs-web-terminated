@@ -135,7 +135,8 @@
 	                var $form = $(this);
 	                var url = $form.attr('action');
 	                
-	                // serialize form
+	                // serialize form: data -> string 
+	                // vb: name=louis&age=21
 	                var dataToSend = $form.serialize();
 	                
 	                /* Send the data using post */

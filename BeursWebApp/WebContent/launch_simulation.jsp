@@ -6,8 +6,8 @@
 	String simulationDescription = request.getParameter("description");
 	String strategyId = request.getParameter("strategyId");
 	String userId = request.getSession().getAttribute("loggedInUserId").toString();
-	String startDate = request.getSession().getAttribute("startDate").toString();
-	String endDate = request.getSession().getAttribute("endDate").toString();
+	String startDate = request.getParameter("startDate").toString();
+	String endDate = request.getParameter("endDate").toString();
 	
 	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");
 	dbInt.addSimulation(simulationName, simulationDescription, userId, strategyId);
@@ -26,7 +26,9 @@
 	// bash process launcher
 	// NEED url aanpassen
 	ProcessBuilder b = new ProcessBuilder("/bin/bash","/home/nero/GIT/Bitbucket/pythonBeurs/WebSlaves/launch_new_task",methodName,methodArguments,simulationId,startDate,endDate);
-	b.start();
-	
-	out.write("simulation started");
+	b.start();		
 %>
+
+<div class="alert alert-success ng-scope">
+	simulation started!
+</div>

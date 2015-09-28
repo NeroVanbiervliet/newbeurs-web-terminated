@@ -6,7 +6,7 @@
 <%
 
 // login expiry time NEED verlagen
-int milliSecondsTillLoginExpired = 10000000;
+int milliSecondsTillLoginExpired = 1000000000;
 
 request.getSession().setAttribute("loginStatus", "failed");
 
