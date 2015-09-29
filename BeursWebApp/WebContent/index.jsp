@@ -22,8 +22,13 @@
 		<!-- main content of page -->
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-			
-			<title>Adjust title!</title>
+			<style type="text/css">
+				td,th
+				{
+				    padding:0 15px 0 15px;
+				}
+			</style>
+			<title>Tests overview</title>
 		</head>
 		<body>
 			<!-- at runtime -->
@@ -52,6 +57,7 @@
 					query += "FROM strategy STG ";
 					query += "JOIN simulation SIM ON STG.id = SIM.strategy ";
 					query += "JOIN user USR ON USR.id = SIM.owner ";
+					query += "ORDER BY simId DESC ";
 					QueryResult queryResult = dbInt.executeQuery(query);
 					
 					// iterate over all entries
