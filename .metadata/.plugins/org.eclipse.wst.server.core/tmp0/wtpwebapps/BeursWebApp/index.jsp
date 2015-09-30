@@ -145,6 +145,14 @@
 					}
 				%> 
 			</table>
+			
+			<%
+				if(!queryResult.containsData())
+				{
+					out.write("<br>Nothing here. Let's do some testing!");
+				}
+			%>
+			
 			<!-- at runtime -->
 			<jsp:include page="footer.jsp" />
 		</body>

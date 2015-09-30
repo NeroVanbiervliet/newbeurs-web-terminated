@@ -124,6 +124,7 @@
 				</div>
 			</form>
 			<!-- jQuery for ajax post -->
+			<!-- TODO oplossing zodat deze code wel in head kan is door document.ready te gebruiken -->
 			<script>
 	            /* attach a submit handler to the form */
 	            $("#simulationForm").submit(function(event) {

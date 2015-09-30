@@ -32,7 +32,9 @@
 			<!-- at runtime TODO compile time van maken?  -->
 			<jsp:include page="navigation.html" />
 			
-			Nothing to see here pal, move on
+			userId=<%= request.getSession().getAttribute("loggedInUserId") %>
+			<br>
+			Nothing else to see here pal, move on
 			
 			<!-- at runtime -->
 			<jsp:include page="footer.jsp" />

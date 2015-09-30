@@ -1,0 +1,5 @@
+<%
+	String dataSourceId = request.getParameter("dataSourceId");
+%>
+
+<div class="text-success">Update started</div>
