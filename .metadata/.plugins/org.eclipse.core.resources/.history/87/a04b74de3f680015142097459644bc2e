@@ -1,0 +1,11 @@
+<%@ include file="import.jsp" %>
+<%
+	String dataSourceId = request.getParameter("dataSourceScript");
+	
+	//bash process launcher
+	ProcessBuilder b = new ProcessBuilder("/bin/bash",pythonPath+"WebSlaves/launch_new_task",methodName,methodArguments,simulationId,startDate,endDate);
+	b.start();	 
+
+%>
+
+<div class="text-success">Update started</div>

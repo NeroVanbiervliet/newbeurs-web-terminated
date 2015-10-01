@@ -21,7 +21,7 @@
 		<!-- main content of page -->
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-			<title>Adjust title!</title>
+			<title>Manage strategies</title>
 			<!-- TODO moet hier niet bij dat het javascript is? -->
 			<script>
 			

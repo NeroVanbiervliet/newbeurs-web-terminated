@@ -28,7 +28,7 @@
 				    padding:0 15px 0 15px;
 				}
 			</style>
-			<title>Tests overview</title>
+			<title>Simulations</title>
 		</head>
 		<body>
 			<!-- at runtime -->

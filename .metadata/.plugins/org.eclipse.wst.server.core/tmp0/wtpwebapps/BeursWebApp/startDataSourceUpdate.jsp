@@ -1,8 +1,10 @@
+<%@ include file="import.jsp" %>
 <%
-	String dataSourceId = request.getParameter("dataSourceId");
+	String dataSourceScript = request.getParameter("dataSourceScript");
 	
-	// NEED juiste script aanroepen 
-
+	//bash process launcher
+	ProcessBuilder b = new ProcessBuilder("/usr/bin/python",pythonPath+"DataUpdate/"+dataSourceScript);
+	b.start();	 
 %>
 
 <div class="text-success">Update started</div>

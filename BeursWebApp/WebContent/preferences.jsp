@@ -21,7 +21,7 @@
 		<!-- main content of page -->
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-			<title>Adjust title!</title>
+			<title>Preferences</title>
 			<!-- TODO moet hier niet bij dat het javascript is? -->
 			
 		</head>
@@ -32,7 +32,12 @@
 			<!-- at runtime TODO compile time van maken?  -->
 			<jsp:include page="navigation.html" />
 			
-			userId=<%= request.getSession().getAttribute("loggedInUserId") %>
+			userId = <%= request.getSession().getAttribute("loggedInUserId") %>
+			<br>
+			ip = <%=request.getRemoteAddr() %>
+			<br>
+			python path = <%=pythonPath %>
+			<br>
 			<br>
 			Nothing else to see here pal, move on
 			

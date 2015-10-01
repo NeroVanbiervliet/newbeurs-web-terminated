@@ -1,6 +1,5 @@
 <%@page import="java.util.HashMap"%>
-<%@ page import="supportClasses.DatabaseInteraction" %>
-<%@ page import="supportClasses.QueryResult" %>
+<%@ include file="import.jsp" %>
 <%
 	// get post variables NEED uncommenten
 	String simulationName = request.getParameter("simulationName");
@@ -39,8 +38,7 @@
 		String methodName = queryResult.iterator().next().get("name").toString();
 		
 		// bash process launcher
-		// NEED url aanpassen
-		ProcessBuilder b = new ProcessBuilder("/bin/bash","/home/nero/GIT/Bitbucket/pythonBeurs/WebSlaves/launch_new_task",methodName,methodArguments,simulationId,startDate,endDate);
+		ProcessBuilder b = new ProcessBuilder("/bin/bash",pythonPath+"WebSlaves/launch_new_task",methodName,methodArguments,simulationId,startDate,endDate);
 		b.start();		
 	
 	

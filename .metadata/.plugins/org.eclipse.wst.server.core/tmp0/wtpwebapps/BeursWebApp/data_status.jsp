@@ -34,11 +34,12 @@
 				 	$('.update-source-button').click(function(){
 				    	
 				 		var dataSourceId = $(this).parent().attr('id');
+				 		var dataSourceScript = $(this).parent().attr('pyScript');
 				 		var url = "startDataSourceUpdate.jsp";
 		                
 		                // Send the data using post 
 		                // {deNaamDieJeAanDeDataWilGeven : jqueryVarMetData}
-		                var posting = $.post(url, {dataSourceId : dataSourceId});
+		                var posting = $.post(url, {dataSourceScript : dataSourceScript});
 		                
 		                // Put the results in a div
 		                posting.done(function(data) {
@@ -90,7 +91,8 @@
 							
 							// dataSource script
 							out.write("<td>");
-							out.write(dataSource.get("script").toString());
+							String dataSourceScript = dataSource.get("script").toString();
+							out.write(dataSourceScript);
 							out.write("</td>");
 							
 							// datSource description
@@ -105,7 +107,7 @@
 							
 							// knop om te updaten
 							out.write("<td>");
-							out.write(String.format("<div id=\"%s\"><input type=\"button\" class=\"btn btn-primary btn-xs update-source-button\" value=\"update\"></div>",dataSourceId));
+							out.write(String.format("<div id=\"%s\" pyScript=\"%s\"><input type=\"button\" class=\"btn btn-primary btn-xs update-source-button\" value=\"update\"></div>",dataSourceId,dataSourceScript));
 							out.write("</td>");
 							
 						out.write("</tr>");
