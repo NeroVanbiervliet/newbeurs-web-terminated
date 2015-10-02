@@ -6,8 +6,8 @@
 <body>
 	<div class="container ng-scope" ng-view="">
 	
-		<!-- shows reason for login: NEED mooier maken -->
-		<% out.write(request.getParameter("loginStatus")); %>
+		<!-- TODO show uncomment reason for login & mooier maken met CSS -->
+		<% // out.write(request.getParameter("loginStatus")); %>
 		<form action="." method="POST">
 			<input type="hidden" name="postOrigin" value="login_form">
 			<p>

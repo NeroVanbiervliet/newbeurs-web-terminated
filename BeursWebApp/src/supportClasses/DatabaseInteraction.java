@@ -5,9 +5,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
+
 import supportClasses.OakDatabaseException;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 // A class to interact with the oak beurs database (c) Nero
 public class DatabaseInteraction 
@@ -63,7 +69,7 @@ public class DatabaseInteraction
 		catch (ClassNotFoundException e) 
 		{
 			// NEED testen of dit geprint wordt op webpagina als dbClassName niet gevonden wordt (brolnaam intypen)
-			e.printStackTrace();
+			out.write(e.printStackTrace());
 		}
 		
 		

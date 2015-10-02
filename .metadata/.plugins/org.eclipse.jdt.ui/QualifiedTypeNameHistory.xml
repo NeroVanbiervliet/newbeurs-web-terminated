@@ -3,8 +3,6 @@
 <fullyQualifiedTypeName name="com.mysql.fabric.xmlrpc.base.Array"/>
 <fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="com.sun.org.apache.xpath.internal.axes.SelfIteratorNoPredicate"/>
-<fullyQualifiedTypeName name="java.sql.Statement"/>
-<fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="supportClasses.DatabaseInteraction"/>
 <fullyQualifiedTypeName name="supportClasses.test"/>
 <fullyQualifiedTypeName name="java.util.List"/>
@@ -14,7 +12,6 @@
 <fullyQualifiedTypeName name="java.sql.Date"/>
 <fullyQualifiedTypeName name="java.sql.Time"/>
 <fullyQualifiedTypeName name="java.sql.Timestamp"/>
-<fullyQualifiedTypeName name="java.sql.ResultSetMetaData"/>
 <fullyQualifiedTypeName name="org.apache.naming.java.javaURLContextFactory"/>
 <fullyQualifiedTypeName name="javax.servlet.jsp.JspWriter"/>
 <fullyQualifiedTypeName name="org.apache.jasper.runtime.JspWriterImpl"/>
@@ -31,6 +28,11 @@
 <fullyQualifiedTypeName name="com.sun.xml.internal.ws.policy.EffectiveAlternativeSelector"/>
 <fullyQualifiedTypeName name="supportClasses.OakDatabaseException"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="org.apache.jasper.tagplugins.jstl.core.Out"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.sql.SQLException"/>
+<fullyQualifiedTypeName name="java.sql.Connection"/>
+<fullyQualifiedTypeName name="java.sql.Statement"/>
+<fullyQualifiedTypeName name="java.sql.ResultSet"/>
+<fullyQualifiedTypeName name="java.sql.ResultSetMetaData"/>
+<fullyQualifiedTypeName name="org.apache.jasper.tagplugins.jstl.core.Out"/>
 </qualifiedTypeNameHistroy>

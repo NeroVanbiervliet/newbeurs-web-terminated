@@ -5,8 +5,9 @@
 <%@ page import="supportClasses.OakDatabaseException" %>
 <%
 
-// login expiry time NEED verlagen
-int milliSecondsTillLoginExpired = 1000000000;
+// login expiry time 
+// 600000 = 10 min
+int milliSecondsTillLoginExpired = 600000;
 
 request.getSession().setAttribute("loginStatus", "failed");
 

@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- at compile time -->
 <%@ include file="import.jsp" %>
+<%@ page import="java.lang.Runtime" %>
 
 <html>
 	<!-- check for logged in user -->
@@ -21,7 +22,7 @@
 		<!-- main content of page -->
 		<head>
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-			<title>Adjust title!</title>
+			<title>Kill simulation</title>
 			<!-- TODO moet hier niet bij dat het javascript is? -->
 			
 		</head>
@@ -37,14 +38,12 @@
 				DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");
 				QueryResult queryResult = dbInt.executeQuery(String.format("SELECT * FROM simulation WHERE id=%s",simId));
 				try
-				{
-					String PID = queryResult.iterator().next().get("PID").toString();	
-					
-					// NEED goed zo? 
-					ProcessBuilder pBuilder = new ProcessBuilder("/bin/bash","kill",PID);
-					pBuilder.start();
-					
+				{			
+					String PID = queryResult.iterator().next().get("PID").toString();
+					Runtime.getRuntime().exec("kill " + PID);	
 					out.write("Simulation terminated.");
+					
+					dbInt.executeQuery(String.format("UPDATE simulation SET status='stopped' WHERE id=%s",simId));
 				}
 				catch(Exception e)
 				{

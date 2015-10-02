@@ -48,6 +48,7 @@
 					<th>owner</th>
 					<th>status</th>
 					<th>running time</th>
+					<th>output</th>
 				</tr>
 			
 				<%
@@ -108,14 +109,10 @@
 							// TODO * ipv 0? 
 							DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.'0'", Locale.ENGLISH);
 							java.util.Date startDate = format.parse(simulation.get("timestampStart").toString());
-							java.util.Date endDate;
+							java.util.Date endDate = new java.util.Date();
 							if(simulation.get("timestampEnd") != null)
 							{
 								endDate = format.parse(simulation.get("timestampEnd").toString());
-							}
-							else
-							{
-								endDate = startDate;
 							}
 							
 							// gettime() is milliseconden
@@ -139,7 +136,10 @@
 							}
 							out.write("</td>");
 							
-							// NEED raw en clean output
+							// raw output TODO clean
+							out.write("<td>");
+							// NEED .raw file kopieren naar deze servermap
+							out.write("</td>");
 							
 						out.write("</tr>");
 					}

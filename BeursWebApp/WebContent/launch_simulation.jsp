@@ -1,7 +1,7 @@
 <%@page import="java.util.HashMap"%>
 <%@ include file="import.jsp" %>
 <%
-	// get post variables NEED uncommenten
+	// get post variables 
 	String simulationName = request.getParameter("simulationName");
 	String simulationDescription = request.getParameter("description");
 	String strategyId = request.getParameter("strategyId");
