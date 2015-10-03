@@ -8,7 +8,7 @@
 	String userId = request.getSession().getAttribute("loggedInUserId").toString();
 	String startDate = request.getParameter("startDate").toString();
 	String endDate = request.getParameter("endDate").toString();	
-	
+
 	// check if the name does not already exist in the database
 	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");	
 	QueryResult queryResult = dbInt.getAllTableEntries("simulation");
@@ -34,7 +34,7 @@
 		queryResult = dbInt.executeQuery(String.format("SELECT method, parameters FROM strategy WHERE id='%s'",strategyId));
 		String methodId = queryResult.iterator().next().get("method").toString();
 		String methodArguments = queryResult.iterator().next().get("parameters").toString();
-		queryResult = dbInt.executeQuery(String.format("SELECT name FROM method WHERE id='%s'",methodId));
+		queryResult = dbInt.executeQuery(String.format("SELECT name FROM strategy WHERE id='%s'",methodId));
 		String methodName = queryResult.iterator().next().get("name").toString();
 		
 		// bash process launcher

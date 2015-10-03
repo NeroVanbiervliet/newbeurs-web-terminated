@@ -34,7 +34,7 @@
 		queryResult = dbInt.executeQuery(String.format("SELECT method, parameters FROM strategy WHERE id='%s'",strategyId));
 		String methodId = queryResult.iterator().next().get("method").toString();
 		String methodArguments = queryResult.iterator().next().get("parameters").toString();
-		queryResult = dbInt.executeQuery(String.format("SELECT name FROM method WHERE id='%s'",methodId));
+		queryResult = dbInt.executeQuery(String.format("SELECT name FROM strategy WHERE id='%s'",methodId));
 		String methodName = queryResult.iterator().next().get("name").toString();
 		
 		// bash process launcher

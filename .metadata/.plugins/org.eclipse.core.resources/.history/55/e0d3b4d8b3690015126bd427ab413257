@@ -1,6 +1,5 @@
 package supportClasses;
 
-import java.awt.print.Printable;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -35,7 +34,6 @@ public class BcryptEnServerTest
 		String password = "fromzerotoone";
 		String candidate = "jams";
 		String hashed = BCrypt.hashpw(password, BCrypt.gensalt(12));
-		System.out.println("hasshedpassword");
 		System.out.println(hashed);
 		
 		// Check that an unencrypted password matches one that has

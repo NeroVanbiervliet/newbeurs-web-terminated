@@ -27,7 +27,6 @@
 <fullyQualifiedTypeName name="supportClasses.QueryResult"/>
 <fullyQualifiedTypeName name="com.sun.xml.internal.ws.policy.EffectiveAlternativeSelector"/>
 <fullyQualifiedTypeName name="supportClasses.OakDatabaseException"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.sql.SQLException"/>
 <fullyQualifiedTypeName name="java.sql.Connection"/>
@@ -35,4 +34,6 @@
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="java.sql.ResultSetMetaData"/>
 <fullyQualifiedTypeName name="org.apache.jasper.tagplugins.jstl.core.Out"/>
+<fullyQualifiedTypeName name="java.awt.print.Printable"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
 </qualifiedTypeNameHistroy>
