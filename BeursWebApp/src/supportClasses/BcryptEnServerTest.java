@@ -1,6 +1,5 @@
 package supportClasses;
 
-import java.awt.print.Printable;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -8,7 +7,7 @@ import java.util.HashSet;
 
 public class BcryptEnServerTest 
 {
-	public static void main(String [] args) throws SQLException
+	public static void main(String [] args) throws SQLException, OakDatabaseException
 	{
 		// test 1
 		

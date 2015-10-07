@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;BeursWebApp/WebContent/images/Oak logo.jpg&apos; to &apos;oak_logo.jpg&apos;" description="Rename resource &apos;Oak logo.jpg&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="WebContent/images/Oak logo.jpg" name="oak_logo.jpg" stamp="1444136834306" updateReferences="true"/>
+</session>

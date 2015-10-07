@@ -1,0 +1,11 @@
+<%@ include file="import.jsp" %>
+<%@page import="java.util.HashMap"%>
+<%
+	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real");
+	QueryResult queryResult = dbInt.getAllTableEntries("user");
+	for(HashMap<String,Object> entry : queryResult)
+	{
+		
+	}
+
+%>

@@ -1,0 +1,24 @@
+<%@page import="supportClasses.OakDatabaseException"%>
+<%@ include file="import.jsp" %>
+<%
+	// TODO lijn hieronder weggedaan, waarom zou je 5 seconden moeten sleepen? 
+	// try{Thread.sleep(5000);}catch(Exception e){}
+	String strategyId = request.getParameter("id");
+	String isActive = request.getParameter("isActive");
+	String parameters = request.getParameter("parameters");
+	
+	// in de sql server aanpassen
+	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");
+	
+	try
+	{
+		
+	}
+	catch(OakDatabaseException e)
+	{
+		
+	}
+	
+	
+	out.write("Changes saved");
+%>

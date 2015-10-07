@@ -40,8 +40,10 @@ if(postOrigin == null)
 }
 else if(postOrigin.equals("login_form"))
 {
-	String account = request.getParameter("account");
-	String password = request.getParameter("password");
+	// replacealls zijn om SQL injection tegen te gaan
+	// TODO nog meer anti SQL injection
+	String account = request.getParameter("account").replaceAll("'", "''");
+	String password = request.getParameter("password").replaceAll("'", "''");
 	
 	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");
 	

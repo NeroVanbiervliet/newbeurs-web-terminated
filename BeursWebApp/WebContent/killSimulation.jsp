@@ -34,6 +34,10 @@
 			<jsp:include page="navigation.html" />
 			
 			<%
+				// TODO als simulation gekilled wordt PID verwijderen uit db
+				// volgende keer dat persoon zelfde sim wil killen zeggen dat die al gekilled is
+				// zo kan je niet per ongeluk andere processen killen (PID herbruikt)
+			
 				String simId = request.getParameter("simId").toString();
 				DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");
 				QueryResult queryResult = dbInt.executeQuery(String.format("SELECT * FROM simulation WHERE id=%s",simId));

@@ -1,0 +1,8 @@
+<%@ include file="import.jsp" %>
+<%@page import="jav
+<%
+	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real");
+	QueryResult queryResult = dbInt.getAllTableEntries("user");
+	for()
+
+%>

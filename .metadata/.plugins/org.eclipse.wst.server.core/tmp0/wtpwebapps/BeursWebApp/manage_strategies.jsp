@@ -79,7 +79,15 @@
 		        
 		        function process(){
 		            if(reqObj.readyState==4){
-		                document.getElementById("ajaxResult").innerHTML=reqObj.responseText;
+		                
+		            	// TODO flashen van 'changes saved' nog oplossen
+		            	
+		            	document.getElementById("ajaxResult").innerHTML=reqObj.responseText;
+		                
+		                // na 3 seconden = 3000 ms terug de tekst weg doen
+	                	window.setTimeout(function () {
+	                		document.getElementById("ajaxResult").innerHTML="";
+	                	}, 3000);
 		            }
 		        }
 			</script>
@@ -93,10 +101,6 @@
 			
 			<form>
 				<% 	
-					// NEED niet update pushen naar de db als er niets veranderd is in de textboxes
-					// want anders maakt hij steeds een strategyEditHistory
-					// onchange event gebruiken in combinatie met leavefocus of zoiets? 
-				
 					DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");
 					
 					// getting entries from strategy table

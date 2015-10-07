@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
-
 import supportClasses.OakDatabaseException;
 
 import java.sql.Connection;
@@ -26,8 +24,8 @@ public class DatabaseInteraction
 	private String dbPassword;
 	
 	// TODO arraylists van maken? 
-	List<String> userList = Arrays.asList("root","webapp","test");
-	List<String> passwordList = Arrays.asList("crvfttngdsntwrk","frmzrtn5894rndm","test");
+	List<String> userList = Arrays.asList("root","webapp");
+	List<String> passwordList = Arrays.asList("crvfttngdsntwrk","frmzrtn5894rndm");
 	
 	// the JDBC connector class
 	private String dbClassName = "com.mysql.jdbc.Driver";
@@ -35,14 +33,13 @@ public class DatabaseInteraction
 	private String connectionArgs;
 	
 	// default constructor
-	// NEED root verwijderen als default user
-	public DatabaseInteraction(String dbName)
+	public DatabaseInteraction(String dbName) throws OakDatabaseException
 	{
-		this(dbName, "root");
+		this(dbName, "webapp");
 	}
 	
 	// constructor 
-	public DatabaseInteraction(String dbName, String dbUser)
+	public DatabaseInteraction(String dbName, String dbUser) throws OakDatabaseException
 	{
 		this.dbName = dbName;
 		this.dbUser = dbUser; 
@@ -68,8 +65,7 @@ public class DatabaseInteraction
 		} 
 		catch (ClassNotFoundException e) 
 		{
-			// NEED testen of dit geprint wordt op webpagina als dbClassName niet gevonden wordt (brolnaam intypen)
-			e.printStackTrace();
+			throw new OakDatabaseException("Error while connecting to database");
 		}
 		
 		
@@ -77,7 +73,7 @@ public class DatabaseInteraction
 	
 	// functions
 	
-	// returns an array of all valid table names NEED throw goed? 
+	// returns an array of all valid table names
 	public HashSet<String> getTableNames() throws SQLException
 	{
 		String query = "SHOW TABLES";
@@ -109,7 +105,6 @@ public class DatabaseInteraction
 		executeQuery(query);
 	}
 	
-	// NEED throws aanpassen?
 	public QueryResult getAllTableEntries(String tableName) throws SQLException
 	{
 		String query = "SELECT * FROM " + tableName;
@@ -190,7 +185,7 @@ public class DatabaseInteraction
 		} 
 		catch (SQLException e) 
 		{
-			// NEED reden voor exception erin verwerken (halen uit e.getmessage of zo)
+			// TODO reden voor exception erin verwerken (halen uit e.getmessage of zo)
 			throw new OakDatabaseException("Unknown database error.");
 		}
 	}
@@ -233,18 +228,32 @@ public class DatabaseInteraction
 	
 	// updates the parameters of a strategy
 	// TODO misschien niet zo netjes om hier strings te gebruiken
-	public void setNewParameters(String strategyId, String userId, String newParameters) throws SQLException
+	public void setNewParameters(String strategyId, String userId, String newParameters) throws SQLException, OakDatabaseException
 	{
-		// NEED geen record aanmaken als de data niet veranderd is
-		// create strategyEditHistory entry
-		String query = "INSERT INTO strategyEditHistory(strategy,editor,newParameters) ";
-		query += String.format("VALUES ('%s','%s','%s'); ", strategyId,userId,newParameters);
+		// obtain current strategy parameters from the database
+		String query = String.format("SELECT parameters FROM strategy WHERE id=%s",strategyId);
+		QueryResult queryResult = executeQuery(query);
 		
-		executeQuery(query);
+		String oldParameters = queryResult.iterator().next().get("parameters").toString();
 		
-		query = String.format("UPDATE strategy SET parameters='%s' WHERE id=%s;",newParameters,strategyId);
-		
-		executeQuery(query);
+		// compare current (old) parameters and the new parameters
+		// if they do not differ, no change in the database is needed
+		if(!oldParameters.equals(newParameters))
+		{
+			// create strategyEditHistory entry
+			query = "INSERT INTO strategyEditHistory(strategy,editor,newParameters) ";
+			query += String.format("VALUES ('%s','%s','%s'); ", strategyId,userId,newParameters);
+			
+			executeQuery(query);
+			
+			query = String.format("UPDATE strategy SET parameters='%s' WHERE id=%s;",newParameters,strategyId);
+			
+			executeQuery(query);			
+		}
+		else
+		{
+			throw new OakDatabaseException("Parameters are already up to date");
+		}
 	}
 	
 	// adds an entry to the simulation table

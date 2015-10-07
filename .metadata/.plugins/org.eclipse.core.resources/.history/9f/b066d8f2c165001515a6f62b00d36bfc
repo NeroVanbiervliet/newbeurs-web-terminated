@@ -1,5 +1,0 @@
-<div class="container ng-scope" ng-view="">
-	Welcome, user <%= request.getSession().getAttribute("loggedInUserName") %>
-	[userId=<%= request.getSession().getAttribute("loggedInUserId") %>]
-
-
