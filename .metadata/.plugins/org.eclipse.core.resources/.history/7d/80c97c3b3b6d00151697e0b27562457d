@@ -6,8 +6,7 @@
     <div class="container">
         <p class="text-muted">
         	&copy; Oak 2015. Contact and suggestions 
-        	<!-- TODO oak mail ipv gmail -->
-        	<a href="mailto:louis.vanbiervliet@gmail.com" target="_top">mail</a>
+        	<a href="mailto:louis.vanbiervliet@gmail.com" target="_top">gmail</a>
         </p>
     </div>
 </div>

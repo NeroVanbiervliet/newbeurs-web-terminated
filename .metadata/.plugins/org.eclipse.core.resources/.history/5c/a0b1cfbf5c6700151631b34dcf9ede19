@@ -1,6 +1,0 @@
-<%
-	String dataSourceId = request.getParameter("dataSourceId");
-	
-	out.write("goe");
-
-%>
