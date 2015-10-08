@@ -20,6 +20,7 @@
 		
 		<!-- main content of page -->
 		<head>
+			<link rel="shortcut icon" href="images/oak_o_logo.ico">
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 			<title>Adjust title!</title>
 			<!-- TODO moet hier niet bij dat het javascript is? -->
@@ -32,7 +33,10 @@
 			<!-- at runtime TODO compile time van maken?  -->
 			<jsp:include page="navigation.html" />
 			
+			<!-- START WORKING ON THE WEBPAGE HERE -->
 			
+			<!-- at runtime -->
+			<jsp:include page="footer.jsp" />
 		</body>
 		
 	<%} %>

@@ -20,6 +20,7 @@
 		
 		<!-- main content of page -->
 		<head>
+			<link rel="shortcut icon" href="images/oak_o_logo.ico">
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 			<title>Manage strategies</title>
 			<!-- TODO moet hier niet bij dat het javascript is? -->
@@ -27,6 +28,7 @@
 			
 				// internet code met eigen aanpassingen
 				// TODO jQuery gebruiken voor ajax (simpelere code)
+				// TODO jQuery gebruiken om event te triggeren ipv uit html jquery triggeren (zoals op init_sim.jsp: input stockSelection)
 				
 				reqObj=null;
 		        function updateIsActive(checkbox)

@@ -20,6 +20,7 @@
 		
 		<!-- main content of page -->
 		<head>
+			<link rel="shortcut icon" href="images/oak_o_logo.ico">
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 			<title>Preferences</title>
 			<!-- TODO moet hier niet bij dat het javascript is? -->

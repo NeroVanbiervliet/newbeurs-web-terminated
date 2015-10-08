@@ -1,0 +1,5 @@
+<%@page import="java.util.HashMap"%>
+<%@ include file="import.jsp" %>
+<%
+	out.write("ajax rules");
+%>

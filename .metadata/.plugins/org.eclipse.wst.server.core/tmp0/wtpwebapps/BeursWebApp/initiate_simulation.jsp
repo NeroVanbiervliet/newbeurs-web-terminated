@@ -20,6 +20,7 @@
 		
 		<!-- main content of page -->
 		<head>
+			<link rel="shortcut icon" href="images/oak_o_logo.ico">
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 			<title>Initiate simulation</title>
 			<!-- vervangen door lokale jquery (er staat al één in WEB-INF -->
@@ -31,6 +32,25 @@
 					var infoToShow = strategyInfo[strategyId];
 					document.getElementById("strategyInfoBox").value = infoToShow;
 				}
+			</script>
+			<script>
+				$(document).ready(function(){
+				    $("#stockSelection").change(function(){				        
+				        // ajax
+				        var url = "num_stocks_in_filter.jsp";
+		                
+		                var dataToSend = $("#stockSelection").serialize();
+		                
+		                /* Send the data using post */
+		                var posting = $.post(url, dataToSend);
+		                
+		                /* Put the results in a div */
+		                posting.done(function(data) {
+		                    $("#stockSelectionAjaxResult").empty().append(data);
+		                });
+				        
+				    });
+				});
 			</script>
 		</head>
 		<body onload="updateInfo()">
@@ -103,6 +123,13 @@
 					<p>
 						<label for="strategyInfoBox">Strategy readme</label>
 						<textarea id="strategyInfoBox" readonly></textarea>
+					</p>
+					
+					<p>
+						<label for="stockSelection">Stock selection</label>
+						<input type="text" name="stockSelection" id="stockSelection">
+						<a target="_blank" href="stock_category_list.jsp">(category list)</a>
+						<div id="stockSelectionAjaxResult"></div>
 					</p>
 					
 					<!-- TODO start date limiteren, niet te lang geleden -->

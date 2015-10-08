@@ -1,0 +1,5 @@
+<%@page import="java.util.HashMap"%>
+<%@ include file="import.jsp" %>
+<%
+	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real");
+%>

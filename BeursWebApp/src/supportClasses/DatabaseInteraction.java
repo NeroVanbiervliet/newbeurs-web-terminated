@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
+import javax.management.Query;
+
 import supportClasses.OakDatabaseException;
 
 import java.sql.Connection;
@@ -264,6 +266,16 @@ public class DatabaseInteraction
 		query += String.format("VALUES('%s','%s','%s','%s','running','0')",name,description,owner,strategy);
 		
 		executeQuery(query);
+	}
+	
+	// returns the number of stocks that match a filter string (stockCategory)
+	public int getNumSatisfyFilter(String filter) throws SQLException
+	{
+		// TODO kan efficienter met COUNT in SQL
+		String query = "SELECT ticker FROM stock JOIN stockCategory ON stock.id = stockCategory.stock ";
+		query += String.format("WHERE %s",filter);
+		
+		return this.executeQuery(query).getNumOfEntries();	
 	}
 	
 }
