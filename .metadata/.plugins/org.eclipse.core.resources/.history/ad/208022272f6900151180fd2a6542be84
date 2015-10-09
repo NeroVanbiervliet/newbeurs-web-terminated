@@ -1,5 +1,0 @@
-<%@ page import="supportClasses.DatabaseInteraction" %>
-<%
-	out.write("hi");
-
-%>

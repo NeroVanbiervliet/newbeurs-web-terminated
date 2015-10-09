@@ -1,0 +1,10 @@
+<%@page import="java.io.InputStream"%>
+<%@ include file="../import.jsp" %>
+<%
+	BufferedReader br = new BufferedReader(new FileReader(pythonPath + "/WebSlaves/output/1.raw"));
+	String line = null;
+	while ((line = br.readLine()) != null) {
+	 	out.write(line);
+	}
+	br.close();
+%>

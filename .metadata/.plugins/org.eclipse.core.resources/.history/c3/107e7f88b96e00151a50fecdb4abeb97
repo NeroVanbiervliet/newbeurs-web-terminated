@@ -1,0 +1,18 @@
+<%@page import="java.io.InputStream"%>
+<%@ include file="../import.jsp" %>
+<%
+	InputStream input = new BufferedInputStream(new FileInputStream(pythonPath + "WebSlaves/output/1.raw"));
+	byte[] buffer = new byte[8192];
+	
+	try 
+	{
+	    for (int length = 0; (length = input.read(buffer)) != -1;) 
+	    {
+	        out.write(buffer.toString());
+	    }
+	} 
+	finally 
+	{
+	    input.close();
+	}
+%>

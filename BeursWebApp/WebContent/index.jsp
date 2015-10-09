@@ -62,6 +62,8 @@
 					query += "ORDER BY simId DESC ";
 					QueryResult queryResult = dbInt.executeQuery(query);
 					
+					String simId;
+					
 					// iterate over all entries
 					for(HashMap<String,Object> simulation : queryResult)
 					{
@@ -69,7 +71,8 @@
 						
 							// simulation id
 							out.write("<td>");
-							out.write(simulation.get("simId").toString());
+							simId = simulation.get("simId").toString();
+							out.write(simId);
 							out.write("</td>");
 							
 							// simulation name
@@ -139,7 +142,9 @@
 							
 							// raw output TODO clean
 							out.write("<td>");
-							// TODO .raw file kopieren naar deze servermap
+							out.write(String.format("<a target=\"_blank\" href=\"support/display_file.jsp?relativeFilePath=WebSlaves/output/%s.raw\">raw</a>",simId));
+							out.write(",");
+							out.write(String.format("<a target=\"_blank\" href=\"support/display_file.jsp?relativeFilePath=data/simLog/sim%s.txt\">simLog</a>",simId));
 							out.write("</td>");
 							
 						out.write("</tr>");

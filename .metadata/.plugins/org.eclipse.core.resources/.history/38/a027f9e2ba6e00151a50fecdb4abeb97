@@ -1,0 +1,14 @@
+<%@page import="java.io.InputStream"%>
+<%@ include file="../import.jsp" %>
+<div class="container ng-scope" ng-view="">
+<%
+	BufferedReader br = new BufferedReader(new FileReader(pythonPath + "/WebSlaves/output/1.raw"));
+	String line = null;
+	while ((line = br.readLine()) != null) 
+	{
+	 	out.write(line);
+	 	out.write("<br>");
+	}
+	br.close();
+%>
+</div>
