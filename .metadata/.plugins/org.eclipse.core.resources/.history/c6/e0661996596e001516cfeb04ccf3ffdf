@@ -139,7 +139,7 @@
 							
 							// raw output TODO clean
 							out.write("<td>");
-							// TODO .raw file kopieren naar deze servermap
+							// NEED .raw file kopieren naar deze servermap
 							out.write("</td>");
 							
 						out.write("</tr>");

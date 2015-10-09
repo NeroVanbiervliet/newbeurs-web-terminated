@@ -13,7 +13,7 @@
 		}
 		else
 		{
-			out.write("<div class=\"text-success\">" + numSatisfy + " matches found</div>");
+			out.write("<div class=\"text-succes\">" + numSatisfy + " matches found</div>");
 		}
 	}
 	catch(Exception exception) // invalid query

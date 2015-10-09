@@ -13,7 +13,7 @@
 		}
 		else
 		{
-			out.write(numSatisfy + " matches found");
+			out.write("<div class=\"text-success\">" + numSatisfy + " matches found</div>");
 		}
 	}
 	catch(Exception exception) // invalid query

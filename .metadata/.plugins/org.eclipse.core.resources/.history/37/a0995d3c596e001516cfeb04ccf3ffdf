@@ -39,7 +39,7 @@
 		String methodName = queryResult.iterator().next().get("name").toString();
 		
 		// bash process launcher
-		ProcessBuilder b = new ProcessBuilder("/bin/bash",pythonPath+"WebSlaves/launch_new_task",methodName,methodArguments,simulationId,startDate,endDate,stockSelection);
+		ProcessBuilder b = new ProcessBuilder("/bin/bash",pythonPath+"WebSlaves/launch_new_task",methodName,methodArguments,simulationId,startDate,endDate);
 		b.start();		
 	
 	
