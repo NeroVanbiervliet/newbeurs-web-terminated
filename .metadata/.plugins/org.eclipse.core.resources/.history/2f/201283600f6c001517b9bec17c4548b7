@@ -1,6 +1,0 @@
-<%@ include file="import.jsp" %>
-<%
-	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real");
-	QueryResult queryResult = 
-
-%>

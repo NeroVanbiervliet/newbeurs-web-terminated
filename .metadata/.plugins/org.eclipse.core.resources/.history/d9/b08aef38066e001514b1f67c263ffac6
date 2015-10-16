@@ -1,7 +1,0 @@
-<%@page import="java.util.HashMap"%>
-<%@ include file="import.jsp" %>
-<%
-	String filter = request.getParameter("endDate").toString();
-	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real");
-	dbInt.get
-%>

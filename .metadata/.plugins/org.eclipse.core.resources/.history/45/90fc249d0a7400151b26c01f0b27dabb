@@ -1,0 +1,7 @@
+package supportClasses;
+
+public class test {
+
+	String hallo = "konijnk";
+	System.out.println(hallo.Substring(0,1));
+}

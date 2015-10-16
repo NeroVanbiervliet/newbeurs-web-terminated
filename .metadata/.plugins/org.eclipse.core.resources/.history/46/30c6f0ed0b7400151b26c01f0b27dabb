@@ -1,0 +1,12 @@
+package supportClasses;
+
+import java.sql.SQLException;
+
+public class test {
+
+	public static void main(String [] args)
+	{
+		String hallo = "{eerste}{tweede}";
+		System.out.println(hallo.substring(0,1));
+	}
+}

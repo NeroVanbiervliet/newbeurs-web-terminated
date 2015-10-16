@@ -1,0 +1,16 @@
+package supportClasses;
+
+import java.sql.SQLException;
+
+public class test {
+
+	public static void main(String [] args)
+	{
+		String hallo = "{eerste}{tweede}";
+		String[] parts = hallo.split("[{}]");
+		for(String part : parts)
+		{
+			System.out.println(part);
+		}
+	}
+}

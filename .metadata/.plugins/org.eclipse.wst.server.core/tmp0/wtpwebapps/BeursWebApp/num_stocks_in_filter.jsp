@@ -18,7 +18,7 @@
 	}
 	catch(Exception exception) // invalid query
 	{
-		out.write("<div class=\"text-danger\">invalid query</div>");
+		out.write(String.format("<div class=\"text-danger\">invalid query: %s</div>",exception.getMessage()));
 	}
 	
 	

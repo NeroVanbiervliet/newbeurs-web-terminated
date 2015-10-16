@@ -39,6 +39,30 @@
 			<!-- at runtime TODO compile time van maken?  -->
 			<jsp:include page="navigation.html" />
 			
+			<h4>
+				StockSelection manual
+			</h4>
+			<div>
+				There are two ways to use the stock selector
+				<ol>
+					<li>
+						Enter a collection of tickers [ticker1,ticker2,...,tickerN]. Tickers that are not found in the database are ignored. Mind the [square] brackets!<br>
+						Example: [AUB.AX,EIG,AIZ] 
+					</li>
+					<li>
+						Enter a number of restrictions {category1=value1,...,categoryN=valueN} the stocks should satisfy. Mind the {curly} brackets!<br>
+						Example: {exchange=BRU,cap=small}
+					</li>
+				</ol>
+			</div>
+				
+			<!-- TODO br niet netjes -->	
+			<br>	
+				
+			<h4>
+				List of possible categories and values
+			</h4>
+						
 			<table>
 				
 				<!-- table header -->

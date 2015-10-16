@@ -10,7 +10,7 @@
 	String startDate = request.getParameter("startDate").toString();
 	String endDate = request.getParameter("endDate").toString();
 	
-	// check if the name does not already exist in the database
+	// check if the simulation name does not already exist in the database
 	DatabaseInteraction dbInt = new DatabaseInteraction("backtest_real","webapp");	
 	QueryResult queryResult = dbInt.getAllTableEntries("simulation");
 	boolean simNameIsUnique = true;
